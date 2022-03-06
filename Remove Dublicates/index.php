@@ -9,6 +9,7 @@ function printArray($array){
 $givenArray = array(1,5,2,5,1,3,2,4,5);
 $uniqueArry = array();
 
+
 foreach($givenArray as $val) { //Loop1 
     
     foreach($uniqueArry as $uniqueValue) { //Loop2 

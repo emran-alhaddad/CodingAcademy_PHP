@@ -1,0 +1,390 @@
+h1 {
+    text-align: left;
+    font-size: 28px;
+    padding-left: 230px;
+    top: 89px;
+    padding: 12px;
+}
+
+.item1 {
+    border: 1px solid brown;
+    top: 28%;
+    left: 60%;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+#it1 {
+    top: 73%;
+    left: 61%;
+    font-family: cursive;
+    font-size: 18px;
+}
+
+.item2 {
+    border: 1px solid brown;
+    top: 28%;
+    left: 20%;
+    border-radius: 40px;
+    cursor: pointer;
+}
+
+#it2 {
+    top: 73%;
+    left: 21%;
+    font-family: cursive;
+    font-size: 18px;
+}
+
+.button {
+    background-color: #333;
+    width: 100%;
+    border: none;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    cursor: pointer;
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    border-radius: 0 0 25px 25px;
+}
+
+.button:hover {
+    background-color: #00000061;
+    color: white;
+}
+
+#nf {
+    position: absolute;
+    top: 21%;
+    left: 33%;
+    opacity: 0.8;
+}
+
+#profile {
+    position: absolute;
+    top: 21%;
+    left: 38%;
+    font-size: 23px;
+}
+
+#profile2 {
+    position: absolute;
+    top: 58%;
+    left: 10%;
+    font-size: 23px;
+    width: 300px;
+    text-align: justify;
+}
+
+.imgprofile {
+    position: absolute;
+    top: 21%;
+    left: 10%;
+    width: 300px;
+    height: 330px;
+    border: 1px solid #795548;
+}
+
+.imgprofile2 {
+    position: absolute;
+    top: 12%;
+    left: 10%;
+    width: 300px;
+    height: 330px;
+    border: 1px solid #795548;
+}
+
+.card {
+    /* Add shadows to create the "card" effect */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    width: 250px;
+    height: 310px;
+    margin-bottom: 30px;
+    position: relative;
+    margin-left: 50px;
+}
+
+.card2 {
+    margin: auto;
+    width: 40%;
+    height: auto;
+    top: -95px;
+}
+
+.card3 {
+    margin: auto;
+    HEIGHT: 350PX;
+}
+
+.card,
+.card button {
+    border-radius: 0 0 20px 20px;
+}
+
+.card img {
+    border-radius: 20px 20px 0 0;
+    height: 200px;
+}
+
+.card a {
+    text-decoration: none;
+    color: #000;
+}
+
+
+/* On mouse-over, add a deeper shadow */
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+
+/* Add some padding inside the card container */
+
+.container {
+    padding: 2px 16px;
+}
+
+.items {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+    margin: 10px 15%;
+}
+
+.items_2 {
+    padding: 20px 10%;
+    margin-top: 130px;
+}
+
+.items_3 {
+    padding: 0 10%;
+    position: relative;
+    width: 100%;
+}
+
+.addbtn {
+    position: absolute;
+    top: 17%;
+    right: 9%;
+    transform: translate(-50%, -50%);
+    background: #79554847;
+    color: black;
+    font-size: 22px;
+    padding: 9px 37px;
+    border: #79554847 solid 1px;
+    cursor: pointer;
+}
+
+.addbtn:hover {
+    background-color: #00000061;
+    color: white;
+}
+
+.btn_edit,
+.btn_delete {
+    background-color: #79554847;
+    width: 50%;
+    border: none;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    position: absolute;
+    bottom: 0px;
+    text-decoration: none;
+}
+
+.btn_edit {
+    left: 0px;
+    border-radius: 0 0 0 20px;
+}
+
+.btn_delete {
+    right: 0px;
+    border-radius: 0 0 20px 0;
+}
+
+.btn_edit:hover,
+.btn_delete:hover {
+    background-color: #00000061;
+    color: white;
+}
+
+.form-group {
+    width: 80%;
+    margin: auto;
+    padding: 5px;
+    font-size: 15px;
+}
+
+.title {
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 15px;
+    text-shadow: 0 0 10px #fff;
+}
+
+label {
+    font-size: 18px;
+    display: block;
+    margin-bottom: 5px;
+    padding-left: 3px;
+    ;
+}
+
+.form-control {
+    width: 100%;
+    font-size: 20px;
+    height: 45px;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 0 4px #70665e;
+}
+
+.btns_div {
+    width: 380px;
+    position: relative;
+    margin-bottom: 25px;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: monospace;
+}
+
+body {
+    background-color: #fff;
+}
+
+nav {
+    width: 100%;
+    height: 75px;
+    line-height: 75px;
+    border-bottom: 2px solid #fff;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    background-color: #333;
+    color: #fff;
+}
+
+nav .logo {
+    font-size: 30px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+}
+
+nav ul {
+    display: flex;
+    flex-direction: row;
+}
+
+nav ul li {
+    display: inline-block;
+    list-style: none;
+    padding: 10px;
+}
+
+nav ul li:hover {
+    text-decoration: underline;
+}
+
+nav ul li a {
+    color: inherit;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 15px;
+    padding: 0px;
+}
+
+.D {
+    padding: 20px;
+    font-family: monospace;
+    border-bottom: 3px solid black;
+    text-align: justify;
+    margin-bottom: 20px;
+}
+
+.D h1 {
+    font-size: 4vw;
+    color: #800;
+    margin-bottom: 10px;
+}
+
+.item {
+    position: absolute;
+    margin-top: 90px;
+    background: #e8cfc299;
+    width: 100%;
+    font-family: cursive;
+    font-size: 10px;
+    color: #755346;
+}
+
+.item h1 {
+    margin-left: 500px;
+}
+
+.addbtn {
+    position: absolute;
+    position: absolute;
+    top: 85%;
+    left: 17%;
+    transform: translate(-50%, -50%);
+    background: #79554847;
+    color: black;
+    font-size: 22px;
+    padding: 9px 37px;
+    border: #79554847 solid 1px;
+    cursor: pointer;
+}
+
+.addbtn:hover {
+    background-color: #00000061;
+    color: white;
+}
+
+.footer-content {
+    background-color: #333;
+    padding: 20px;
+}
+
+.socials ul li {
+    display: inline-block;
+    width: 40px;
+    font-size: 25px;
+}
+
+.twitter a {
+    text-decoration: none;
+    color: skyblue;
+}
+
+.facebook a {
+    text-decoration: none;
+    color: darkblue;
+}
+
+.instagram a {
+    text-decoration: none;
+    color: #e93465;
+}
+
+.footer-content h3 {
+    color: #fff;
+    font-family: monospace;
+}

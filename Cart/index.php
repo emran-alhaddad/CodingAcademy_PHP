@@ -32,6 +32,20 @@ switch($_GET["action"]) {
 			}
 		}
 	break;
+    case "edit":
+        if(!empty($_GET["quantity"])) {
+			if(!empty($_SESSION["cart_item"])) {
+				if(in_array($_GET["code"],array_keys($_SESSION["cart_item"]))) {
+					foreach($_SESSION["cart_item"] as $k => $v) {
+							if($_GET["code"] == $k) {
+								$_SESSION["cart_item"][$k]["quantity"] = $_GET["quantity"];
+							}
+					}
+				} 
+			} 
+		}
+	break;
+
 	case "remove":
 		if(!empty($_SESSION["cart_item"])) {
 			foreach($_SESSION["cart_item"] as $k => $v) {
@@ -69,8 +83,14 @@ switch($_GET["action"]) {
         <div class="container">
             <a href="#" class="logo">CompanyLogo</a>
             <a href="#" class="bag">
-                <i class="fas fa-shopping-bag">BAGE</i>
-                <span class="quantity">0</span>
+                <i class="fas fa-shopping-bag"></i>
+                <?php	
+                $total_quantity = 0;
+                    if(isset($_SESSION["cart_item"]))	
+                        foreach ($_SESSION["cart_item"] as $item)
+                            $total_quantity += $item["quantity"];
+                ?>
+                <span class="quantity"><?php echo $total_quantity?></span>
             </a>
         </div>
     </header>
@@ -104,7 +124,7 @@ switch($_GET["action"]) {
                     <img src="productImages/<?php echo $item["image"]; ?>" width="100"> 
                     <br>
                 <?php echo $item["name"]; ?></td>
-				<td><?php echo $item["quantity"]; ?></td>
+				<td> <input type="text" id="" value="<?php echo $item["quantity"]; ?>" ></td>
 				<td><?php echo "$ ".$item["price"]; ?></td>
 				<td><?php echo "$ ". number_format($item_price,2); ?></td>
 				<td><a href="index.php?action=remove&code=<?php echo $item["code"]; ?>" class="deletebtn">X</a></td>
@@ -138,7 +158,7 @@ switch($_GET["action"]) {
         <?php
             $product_array = $db_handle->runQuery("SELECT * FROM tblproduct ORDER BY id ASC");
             if (!empty($product_array)) { 
-                for($i=0; $i<3; $i++)
+                // for($i=0; $i<3; $i++)
                 foreach($product_array as $key=>$value){
         ?>
         <form class="card" method="post" action="index.php?action=add&code=<?php echo $product_array[$key]["code"]; ?>">

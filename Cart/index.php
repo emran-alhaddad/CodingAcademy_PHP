@@ -121,12 +121,18 @@ switch($_GET["action"]) {
             
 				<tr>
 				<td>
-                    <img src="productImages/<?php echo $item["image"]; ?>" width="100"> 
+                    <img src="productImages/<?php echo $item["image"]; ?>" width="50" height="50"> 
                     <br>
                 <?php echo $item["name"]; ?></td>
-				<td> <input type="text" id="" value="<?php echo $item["quantity"]; ?>" ></td>
-				<td><?php echo "$ ".$item["price"]; ?></td>
-				<td><?php echo "$ ". number_format($item_price,2); ?></td>
+				<td style="display:flex; flex-direction:row;"> 
+                    <a href="#" onclick="changeQuantity(<?php echo $item['code']; ?>,-1);" class="arrowEdit" ><i class="fas fa-arrow-down"></i> </a>
+
+                    <input class="quantityEdit" type="number" min=1 max=20 id="<?php echo $item["code"]; ?>" value="<?php echo $item["quantity"]; ?>" >
+
+                    <a href="#" onclick="changeQuantity(<?php echo $item['code']; ?>,+1);" class="arrowEdit" ><i class="fas fa-arrow-up"></i></a>
+                </td>
+				<td><?php echo $item["price"]." YR"; ?></td>
+				<td><?php echo number_format($item_price,2)." YR"; ?></td>
 				<td><a href="index.php?action=remove&code=<?php echo $item["code"]; ?>" class="deletebtn">X</a></td>
 				</tr>
 
@@ -164,7 +170,7 @@ switch($_GET["action"]) {
         <form class="card" method="post" action="index.php?action=add&code=<?php echo $product_array[$key]["code"]; ?>">
                 <img src="productImages/<?php echo $product_array[$key]["image"]; ?>" alt="">
                 <p class="title" ><?php echo $product_array[$key]["name"]; ?></p>
-                <p class="price" ><?php echo "$".$product_array[$key]["price"]; ?></p>
+                <p class="price" ><?php echo $product_array[$key]["price"]." YR"; ?></p>
                 <input type="hidden" name="quantity" value=1>
                 <button class="button" type="submit">Add to Card</button>
         </form>
@@ -175,6 +181,10 @@ switch($_GET["action"]) {
     </div>
 
     <script src="js/main.js"></script>
+    <script>
+
+        
+    </script>
 
 </body>
 

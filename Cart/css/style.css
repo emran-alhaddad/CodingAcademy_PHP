@@ -161,6 +161,7 @@ p {
 .cart td {
     padding: 10px;
     text-align: center;
+    vertical-align: sub;
 }
 
 .closecart {
@@ -180,4 +181,8 @@ p {
     line-height: 1.5rem;
     font-size: 0.8rem;
     font-weight: bold;
+}
+
+.quantityEdit {
+    margin: 0 5px;
 }

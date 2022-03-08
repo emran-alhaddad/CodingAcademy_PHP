@@ -159,7 +159,7 @@ switch($_GET["action"]) {
         </div>
     </div>
     
-    <h1>EXPLORE THE COLLECTION</h1>
+    <h1 class="container">EXPLORE THE COLLECTION</h1>
     <div class="cards container">
         <?php
             $product_array = $db_handle->runQuery("SELECT * FROM tblproduct ORDER BY id ASC");

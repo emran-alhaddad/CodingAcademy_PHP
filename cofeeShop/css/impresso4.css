@@ -1,0 +1,363 @@
+*{
+  margin:0px; /* no edges spaces */
+  padding:0px;
+  box-sizing: border-box;
+  font-family: unset;
+}
+
+body {
+background-color: #bd71359c;
+
+}
+ nav {
+
+width: 100%;
+height:75px;
+line-height: 75px;
+padding: 0px 100px;
+position: fixed;
+z-index: 1;
+border-bottom: 2px solid #795548;
+background-image: url(header.png);
+
+ }
+
+ nav .logo {
+font-size: 30px;
+font-weight: bold;
+letter-spacing: 1.5px;
+
+ }
+nav .log{
+
+   position: absolute;
+    top: 0%;
+    left:18%;
+
+ }
+nav .logo p {
+  color: #795548;
+  float: left;
+  width: 200px;
+
+}
+ 
+nav ul {
+  float: right;
+ 
+}
+nav ul li {
+  display: inline-block; /* making them next to each other */
+  list-style: none;
+  width: 100px;
+   padding:0px 2px 0px 0px;
+
+}
+nav ul li:hover{
+	text-decoration:underline;
+}
+
+nav ul li a {
+  color: #795548;
+  font-weight: bold;
+font-family:  unset;
+text-decoration: none;
+font-size: 15px;
+padding: 0px; 
+
+}
+.smallBag{
+	margin-left: -20px;
+	height:90px;
+	width:80px;
+}
+/*items cart */
+
+h2{
+    font-family: Cursive;
+    font-style: italic;	
+	font-weight:100;
+	text-align: center;
+	
+}
+table{
+	width: 100%;
+	border-collapse: collapse; 
+	
+	
+}
+.cart-info{
+	
+    display: flex;
+    	
+	
+}
+
+th{
+	text-align: left;
+	padding: 15px;
+	color: black;
+	background: #e8cfc299;
+	font-weight: normal; 
+}
+td{ padding: 10px 5px; }
+td input{
+	width:55px;
+	height: 30px;
+	padding: 5px
+}
+td a{
+	color: black;
+	font-size: 12px;
+}
+
+.checkout{
+	border: #79554847 solid 1px;
+	padding:5px 20px;
+	background: #79554847;
+	text-decoration: none;
+	color: black;
+	margin-top:50px;
+	margin-left:1250px;
+}
+.checkout:hover { 
+    background-color:#00000061;
+    color: white;
+}
+td img{
+	width:80px;
+	height: 80px;
+	margin-right: 10px; 
+}
+.cart-page{ 
+    margin: 100px auto;
+}
+
+.total-price{
+	display: flex;
+	justify-content: flex-end;	
+}
+.total-price table{
+	border-top: 3px solid #79554847;
+    width: 100%;
+    max-width: 400px;	
+}
+td:last-child{
+	text-align: right;
+	}
+th:last-child{
+	text-align: right;
+	} 
+	
+	
+
+
+
+ 
+/*cart page end*/
+
+
+/*checkout css*/
+.Review{
+	
+	width:70%;
+	height:70%;
+	padding: 5% 5%;
+	background-color: #e8cfc299;
+	margin: 3% 15%;
+	
+}
+.addressFormat{
+	Border: 3px solid #79554847;
+	width: 15%;
+	margin-left:4%;
+	font-size:13px;
+}
+input[type="radio"]{
+	margin-left: 2%;
+	
+}
+.submit{
+	
+	background: #79554847;
+	width: 30%;
+	height: 30px;
+	margin-left:35%;
+	
+}
+.submit:hover{
+	background-color:#00000061;
+    color: white;
+	
+	
+}
+.points{
+	display:inline;
+	
+	
+}
+p .points{ margin-left: 20%;}
+div .points{ margin-right: 20%;}
+
+/*card Info*/
+.cardInfo{
+	margin: 2% 4%;
+	
+}
+.cnum{ 
+width: 40%;
+padding: 7px;
+border:0px;
+}
+.cexpyear{
+	width: 10%;
+	padding: 7px;
+	border:0px;
+	margin-left:-2px;
+	text-decoration:underline;
+	}
+.ccvv{
+	width: 10%;
+	padding: 7px;
+	border:0px;
+	margin-left:-2px;
+	text-decoration:underline;
+	}
+.cname{
+	width: 60.4%;
+    padding: 7px;
+	border:0px;
+	margin-top:1px;
+}
+.SAVE{
+	margin: 4px 200px ;
+	width: 10%;
+	height: 30px;
+	background: #79554847;
+	
+}
+.SAVE:hover{
+	background-color:#00000061;
+    color: white;
+}
+/*Customer Profile page*/
+
+
+.Profile{
+	width:70%;
+	height: 70%;
+	background-color: #e8cfc299;
+	margin:1% 15%;
+	Display:inline-block;
+	
+}
+
+.ProfilePicture{
+	width:99px;
+	height:99px;
+	margin-left: 40px;
+	margin-top: 15px;
+	
+	
+}
+.EditPro{
+	color: black;
+	font-style:none;
+	
+}
+.EditPro:hover{ 
+font-weight:bold;
+}
+
+.wellcome{
+	margin-left: 170px;
+	margin-bottom: 60px;
+	margin-top: 15px;
+}
+/*p2*/
+hr{ color:#79554847;
+    font-size: 90px;
+   }
+.first img p{
+	display: inline-block;
+}
+.second{
+	margin:15px;
+	
+}
+.customerInfo{
+	margin-left: 30px;
+}
+.customerInfo input{ 
+   margin: 3px 20px;
+   display: block;
+   padding: 3px;
+}
+
+.third{
+	margin:15px;
+}
+
+.addressInfo{
+	margin-left: 30px;
+}
+.addressInfo input{
+	margin: 3px 20px;
+   display: block;
+   padding: 3px;
+}
+
+
+/* -----------------FOOTER--------------------------- */
+
+
+.footer-content {
+	background-color: #795548;
+	position:fixed;
+	bottom:0;
+	left:0;
+	width: 100%;
+	height:11%;
+  }
+
+.socials ul li  {
+  display: inline-block; /* making them next to each other */
+  width: 40px; /* distance  between icons */
+  font-size:25px;
+}
+
+.twitter a {
+    text-decoration: none;
+    color: skyblue;
+}
+
+.facebook a {
+    text-decoration: none;
+    color: darkblue;
+}
+
+.instagram a {
+    text-decoration: none;
+    color: #e93465;
+}
+
+
+.footer-content h3 {
+color: #bea396;
+font-family: unset;
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

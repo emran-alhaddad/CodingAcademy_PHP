@@ -1,0 +1,223 @@
+*{
+  margin:0px; /* no edges spaces */
+  padding:0px;
+  box-sizing: border-box;
+  font-family: unset;
+}
+
+body {
+background-color: #bd71359c;
+
+
+}
+/* --------------------NAVIGATION BAR--------------------*/
+ nav {
+
+width: 100%;
+height:75px;
+line-height: 75px;
+padding: 0px 100px;
+
+border-bottom: 2px solid #795548;
+ }
+
+ nav .logo {
+font-size: 30px;
+font-weight: bold;
+letter-spacing: 1.5px;
+ }
+nav .logo p {
+  color: #795548;
+  float: left;
+  width: 200px;
+}
+nav .log{
+
+   position: absolute;
+    top: 0%;
+    left:18%;
+
+ }
+
+nav ul {
+  float: right;
+}
+nav ul li {
+  display: inline-block; /* making them next to each other */
+  width: 100px;
+
+
+}
+nav ul li:hover {
+  text-decoration: underline;
+}
+
+nav ul li a {
+  color: #795548;
+  font-weight: bold;
+font-family:  unset;
+text-decoration: none;
+font-size: 15px;
+padding: 0px; 32px;
+
+}
+.bag {
+  margin-top: 10px;
+    position: absolute;
+    display: inline;
+    margin-left: 34px
+}
+.fav {
+  margin-top: 10px;
+      position: absolute;
+      display: inline;
+
+}
+
+/*----------------------------PAGE CONTENT--------------------*/
+.sign{
+margin: auto;
+margin-top: 100px;
+background: #e8cfc299;
+max-width: 380px; /* size of the container */
+padding: 50px;
+border-radius: 20px;
+font-family: unset;
+font-size: 15px;
+}
+
+.sign-up{
+margin: auto;
+margin-top: 90px;
+background: #e8cfc299;
+max-width: 320px; /* size of the container */
+padding: 50px;
+border-radius: 20px;
+font-family: unset;
+font-size: 15px;
+}
+
+
+
+input[type=text] {
+  width: 100%;
+  padding: 8px; /* حجم البوكس من جوا بالنسبة للكلام */
+  margin: 8px;
+}
+
+input[type=submit]{
+  color: #a67853;
+  width: 80px;
+  padding: 4px;
+
+}
+
+.ELabel {
+
+  color:#a67853;
+}
+
+.container {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.pics {
+  list-style-type: none;
+  margin: auto;
+  margin-top: 50px;
+  margin-left: 750px;
+}
+
+.abt {
+font-family: unset;
+color: #795548;
+font-size: 30px;
+margin: auto;
+margin-top: 130px;
+background: #e8cfc299;
+max-width: 450px; /* size of the container */
+padding: 80px;
+border-radius: 20px;
+position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.about-us {
+position: absolute;
+top: 30%;
+left: 50%;
+transform: translate(-50%, -50%);
+margin-top: -100px;
+background: #e8cfc299;
+width: 100%;
+height: 80px;
+font-family: unset;
+font-size: 25px;
+color: #795548;
+
+
+}
+.about-us h1 {
+padding: 15px;
+}
+
+.contact-info {
+  font-family: unset;
+  color: white;
+  font-size: 25px;
+  margin: auto;
+  margin-top: 200px;
+  position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+.contact-info ul li {
+  display: inline-block;
+  text-decoration-style: none;
+}
+
+/* -------------------FOOTER--------------------------- */
+
+
+.footer-content {
+  background-color: #795548;
+  position:fixed;
+  bottom:0;
+  left:0;
+  width: 100%;
+  height:11%;
+}
+
+.socials ul li  {
+  display: inline-block; /* making them next to each other */
+  width: 40px; /* distance  between icons */
+  font-size:25px;
+}
+
+.twitter a {
+    text-decoration: none;
+    color: skyblue;
+}
+
+.facebook a {
+    text-decoration: none;
+    color: darkblue;
+}
+
+.instagram a {
+    text-decoration: none;
+    color: #e93465;
+}
+
+
+.footer-content h3 {
+color: #bea396;
+font-family: unset;
+
+
+}

@@ -1,0 +1,182 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;700;900&display=swap');
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 18px;
+    color: #585858;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+@media(max-width:1024px) {
+    .container {
+        max-width: 100%;
+    }
+    header .container {
+        max-width: 90%;
+    }
+}
+
+header {
+    border-bottom: 1px solid rgb(243, 243, 243);
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+p {
+    margin: 0.5rem;
+}
+
+.logo {
+    text-transform: uppercase;
+    color: #000;
+    font-size: 22px;
+    font-weight: bold;
+    line-height: 2rem;
+}
+
+.bag {
+    font-size: 28px;
+    position: relative;
+}
+
+.bag span {
+    display: block;
+    background: #E20000;
+    color: #fff;
+    width: 1.3rem;
+    height: 1.3rem;
+    text-align: center;
+    border-radius: 100%;
+    line-height: 1.3rem;
+    font-size: 0.8rem;
+    font-weight: bold;
+    position: absolute;
+    right: -12px;
+    top: 19px;
+}
+
+@media(min-width:800px) {
+    .cards {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 3rem 0 0 0;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+    .card {
+        width: 31%;
+    }
+}
+
+.card {
+    border: solid #ccc 1px;
+    border-radius: 20px;
+    overflow: hidden;
+    line-height: 1.5rem;
+    padding-bottom: 20px;
+    margin: 10px;
+}
+
+.card img {
+    width: 100%;
+}
+
+.card .title {
+    font-weight: 900;
+    font-size: 26px;
+    text-align: center;
+}
+
+.card .price {
+    font-size: 2rem;
+    font-weight: 100;
+    text-align: center;
+    line-height: 1rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.button {
+    border-radius: 50px;
+    display: block;
+    background: #000;
+    color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+    height: 3rem;
+    width: 90%;
+    line-height: 3rem;
+    margin: auto;
+    transition: all .3s ease;
+}
+
+.button:hover {
+    background: #2c2c2c;
+}
+
+.cart {
+    width: 38%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    background: #fff;
+    box-shadow: 0px 0px 5px #d4d4d4;
+    font-size: 16px;
+    transition: all .5s ease;
+    text-align: center;
+}
+
+.activo {
+    right: 0;
+}
+
+.cart #minicart {
+    padding: 1.3rem;
+}
+
+.cart #minicart .button {
+    margin-top: 2rem;
+}
+
+.cart table {
+    border-collapse: collapse;
+}
+
+.cart th,
+.cart td {
+    padding: 10px;
+    text-align: center;
+}
+
+.closecart {
+    font-size: 2rem;
+    position: absolute;
+    right: 10px;
+}
+
+.deletebtn {
+    display: block;
+    background: #E20000;
+    color: #fff;
+    width: 1.5rem;
+    height: 1.5rem;
+    text-align: center;
+    border-radius: 100%;
+    line-height: 1.5rem;
+    font-size: 0.8rem;
+    font-weight: bold;
+}

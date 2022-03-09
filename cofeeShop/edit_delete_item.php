@@ -10,14 +10,14 @@ mysqli_close($con);
 echo "<script> 
             alert('Product Deleted Successfully ');
             location.href='items.php'; </script>";
-            exit;
+            
 }
 
 else if(isset($_REQUEST['edit']))
 {
 
   $id = $_REQUEST['edit'];
-  include("db.php");
+  include_once("db.php");
   $product_query = "SELECT * FROM product,category WHERE cat_ID=categoryID AND ID=".$id."";
     $run_query = mysqli_query($con,$product_query);
     if($run_query){
@@ -36,8 +36,9 @@ else if(isset($_REQUEST['edit']))
   {
     echo "<script> 
               alert('Access Denied !!!');
-              location.href='Admin.php'; </script>";
-              exit;
+              location.href='items.php'; 
+          </script>";
+              
   }
 
 if(isset($_POST['btn_save']))
@@ -66,8 +67,9 @@ if(isset($_POST['btn_save']))
         mysqli_close($con);
         echo "<script> 
                     alert('Product Updated Successfully ');
-                    location.href='Admin.php'; </script>";
-                    exit;
+                    location.href='items.php'; 
+              </script>";
+                    
     }
 
 
@@ -75,12 +77,13 @@ if(isset($_POST['btn_save']))
   else
   {
 
-    mysqli_query($con,"UPDATE `item` SET `name`='$product_name', `Price`='$price', `description`='$details', `categoryID`='$product_type' WHERE `ID`=$product_id") or die ("query incorrect");
+    mysqli_query($con,"UPDATE `product` SET `name`='$product_name', `Price`='$price', `description`='$details', `categoryID`='$product_type' WHERE `ID`=$product_id") or die ("query incorrect");
     mysqli_close($con);
     echo "<script> 
                 alert('Product Updated Successfully ');
-                location.href='Admin.php'; </script>";
-                exit;
+                location.href='items.php'; 
+                </script>";
+                
   
   
   }
@@ -110,12 +113,14 @@ if(isset($_POST['btn_save']))
   </head>
   <body>
   <nav>
+    
       <div class="logo">
         <p>Impresso</p> 
       </div>
       <ul>
                 <li><a href="index.php">HOME</a></li>
-                <li><a href="#">ITEMS</a></li>
+                <li><a href="items.php">ITEMS</a></li>
+                <li><a href="categories.php">CATEGORIES</a></li>
       </ul> 
 	</nav> 
 

@@ -156,7 +156,7 @@ h1 {
     flex-direction: row;
     justify-content: space-between;
     align-items: stretch;
-    margin: 10px 15%;
+    margin: 50px 15%;
 }
 
 .items_2 {
@@ -387,4 +387,46 @@ nav ul li a {
 .footer-content h3 {
     color: #fff;
     font-family: monospace;
+}
+
+.btn_add {
+    color: #fff;
+    background-color: #333;
+    height: fit-content;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.oneLineDiv {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.cat_title {
+    font-size: 2vw;
+    text-align: center;
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 25px;
+}
+
+.cat_id {
+    background-color: #333;
+    color: #fefefe;
+    font-size: 2vw;
+    padding: 8px 15px;
+    border-radius: 50%;
+    position: absolute;
+    top: -22px;
+    left: 43%;
+}
+
+.cat_desc {
+    font-style: oblique;
+    text-align: center;
+    font-size: 0.95vw;
 }

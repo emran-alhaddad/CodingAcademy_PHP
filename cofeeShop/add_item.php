@@ -22,41 +22,40 @@ if($picture_type=="image/jpeg" || $picture_type=="image/jpg" || $picture_type=="
 	
 		$pic_name=time()."_".$picture_name;
 		move_uploaded_file($picture_tmp_name,"product_images/".$pic_name);
-mysqli_query($con,"insert into item (name, logo,Price,description, categoryID) values ('$product_name','$pic_name','$price','$details','$product_type')") or die ("query incorrect");
+mysqli_query($con,"insert into product (name, logo,Price,description, categoryID) values ('$product_name','$pic_name','$price','$details','$product_type')") or die ("query incorrect");
 mysqli_close($con);
 echo "<script> 
             alert('New Product Added Success ');
-            location.href='Admin.php'; </script>";
-            exit;
+            location.href='items.php'; 
+      </script>";
+
 }
 
 
 }
 ?>
+
 <!DOCTYPE html>
-<html> 
+<html>
   <head>
     <meta charset="utf-8">
-    <title>Impresso - items</title>
-    <link rel="stylesheet" type="text/css" href="css/impresso3.css">
-    <!-- social media icons were taken from the resourse below  -->
-    <script src="https://kit.fontawesome.com/cca0a1b6fc.js" crossorigin="anonymous"></script>
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="css/Impresso3.css">
+	
+	<!-- social media icons were taken from the resourse below  -->
+	<script src="https://kit.fontawesome.com/cca0a1b6fc.js" crossorigin="anonymous"></script>
   </head>
   <body>
     <nav>
-      <img src="images/logo1.jpeg" class="log" alt="logo" width="100" height="70"/>
       <div class="logo">
-        <p>Impresso</p>
+        <p>Impresso</p> 
       </div>
       <ul>
-        <li><a href="index.php">Home</a></li>
-        <li><a href="items.php">Items</a></li>
-        <li><a href="about-us.html">About us</a></li>
-        <li><a href="#"><img id="fav" src="images/fav.png" alt="Fav" width="40" height="40"/></a></li>
-        <li><a href="#"><img id="bag" src="images/bag.png" alt="bag" width="35" height="35"/></a></li>
-
-      </ul>
-    </nav>
+                <li><a href="index.php">HOME</a></li>
+                <li><a href="items.php">ITEMS</a></li>
+                <li><a href="categories.php">CATEGORIES</a></li>
+      </ul> 
+	</nav> 
     
     <form action="" method="post" type="form" name="form" enctype="multipart/form-data">
               <div class="items_2">
@@ -114,7 +113,24 @@ echo "<script>
                 </div>
               
               </form>
-              
+              <footer>
+  <br>
+<div class="footer-content" align="center">
+  <h3>alhaddademran@gmail.com <br> Phone number:+967770774255 </h3>
+<br>
+  <div class="socials">
+<ul>
 
-   </body>
-</html>
+<li class="twitter" ><a href="http://twitter.com"><i class="fab fa-twitter"></i></a></li>
+<li class="instagram"><a href="http://instagram.com"> <i class="fab fa-instagram"></i></a></li>
+<li class=facebook><a href="http://facebook.com"> <i class="fab fa-facebook"></i></a></li>
+</ul>
+</div>
+</div>
+
+
+</footer>
+
+
+</body>
+	</html>

@@ -19,6 +19,7 @@ session_start();
       <ul>
                 <li><a href="#">HOME</a></li>
                 <li><a href="items.php">ITEMS</a></li>
+				<li><a href="categories.php">CATEGORIES</a></li>
       </ul> 
 	</nav> 
 

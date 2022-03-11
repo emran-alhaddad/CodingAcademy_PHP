@@ -1,5 +1,7 @@
 <?php
 session_start();
+require_once('PresentationLayer/FunctionController.php');
+FunctionController::init();
 ?>
 
 <!DOCTYPE html>
@@ -37,37 +39,7 @@ session_start();
 
              <div class="items">
 
-                  <?php
-                    include("db.php");
-                    $product_query = "SELECT * FROM product,category WHERE cat_ID=categoryID";
-                      $run_query = mysqli_query($con,$product_query);
-                      
-                      if(mysqli_num_rows($run_query)>0){
-                        while($row = mysqli_fetch_array($run_query)){
-                          $pro_id    = $row['ID'];
-                          $pro_title = $row['name'];
-                          $pro_price = $row['Price'];
-                          $pro_image = $row['logo'];
-                          $pro_cat = $row['cat_name'];
-
-
-                        
-                          echo "
-                          <div class='card'>
-                          <a href='#'>
-                                <img src='product_images/$pro_image' alt='Avatar' style='width:100%'>
-                                <div class='container'>
-                                <h4><b>$pro_title</b> </h4>
-                                  <p> <i>$pro_price</i></p>
-                                </div>
-                              </a>
-                              <a class='btn_edit' href='edit_delete_item.php?edit=$pro_id'>Edit</a>
-			<a class='btn_delete' href='edit_delete_item.php?delete=$pro_id'>Delete</a>
-                          </div>
-                          ";
-                        }
-                      }
-                  ?>
+                  <?php FunctionController::showAllProducts(); ?>
                
                     </div>
               </div>

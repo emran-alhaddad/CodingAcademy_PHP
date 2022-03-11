@@ -1,5 +1,7 @@
 <?php
 session_start();
+require_once('PresentationLayer/FunctionController.php');
+FunctionController::init();
 ?>
 
 <!DOCTYPE html>
@@ -37,33 +39,7 @@ session_start();
              <div class="items">
 
             
-                  <?php
-                    include("db.php");
-                    $category_query = "SELECT * FROM category ";
-                      $run_query = mysqli_query($con,$category_query);
-                      
-                      if(mysqli_num_rows($run_query)>0){
-                        while($row = mysqli_fetch_array($run_query)){
-                          $cat_id    = $row['cat_ID'];
-                          $cat_name = $row['cat_name'];
-                          $cat_description = $row['description'];
-                          
-                          echo "
-                          <div class='card'>
-                          <a href='#'>
-                          <span class='cat_id'>$cat_id</span>
-                          <span class='cat_title'>$cat_name</span>
-                              <div class='container'>
-                                <p class='cat_desc'>$cat_description</p>
-                              </div>
-                              </a>
-                              <a class='btn_edit' href='edit_delete_category.php?edit=$cat_id'>Edit</a>
-                              <a class='btn_delete' href='edit_delete_category.php?delete=$cat_id'>Delete</a>
-                          </div>
-                          ";
-                        }
-                      }
-                  ?>
+                  <?php FunctionController::showAllCategories(); ?>
               
                     </div>
               </div>

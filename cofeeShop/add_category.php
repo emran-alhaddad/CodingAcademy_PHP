@@ -1,20 +1,12 @@
 <?php
 session_start();
-include("db.php");
-
+require_once('PresentationLayer/FunctionController.php');
+FunctionController::init();
 
 if(isset($_POST['btn_save']))
 {
-$category_name=$_POST['category_name'];
-$details=$_POST['details'];
 
-mysqli_query($con,"insert into category (cat_name, description) values ('$category_name','$details')") or die ("query incorrect");
-mysqli_close($con);
-echo "<script> 
-            alert('New Category Added Success ');
-            location.href='categories.php'; 
-      </script>";
-
+  FunctionController::addCategory(name:$_POST['category_name'],description:$_POST['details']);
 
 }
 ?>

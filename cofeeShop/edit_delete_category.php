@@ -1,61 +1,27 @@
 <?php
 session_start();
-include("db.php");
+require_once('PresentationLayer/FunctionController.php');
+FunctionController::init();
+$category;
 
-if(isset($_REQUEST['delete']))
-{
-  $id = $_REQUEST['delete'];
-  mysqli_query($con,'DELETE FROM category WHERE cat_ID='.$id.'');
-mysqli_close($con);
-echo "<script> 
-            alert('Category Deleted Successfully ');
-            location.href='categories.php'; </script>";
-            
-}
+if(isset($_REQUEST['delete'])) FunctionController::deleteCategory($_REQUEST['delete']);        
 
-else if(isset($_REQUEST['edit']))
-{
+else if (isset($_REQUEST['edit'])) $category = FunctionController::getCategory($_REQUEST['edit']);
 
-  $id = $_REQUEST['edit'];
-  include_once("db.php");
-  $category_query = "SELECT * FROM category WHERE  cat_ID=".$id."";
-    $run_query = mysqli_query($con,$category_query);
-    if(mysqli_num_rows($run_query)>0){
-      while($row = mysqli_fetch_array($run_query)){
-        $cat_id    = $row['cat_ID'];
-        $cat_title = $row['cat_name'];
-        $cat_descr = $row['description'];
-      }
-    }
-  }
-
-  else
-  {
+else
     echo "<script> 
               alert('Access Denied !!!');
               location.href='categories.php'; 
           </script>";
               
-  }
+  
 
 if(isset($_POST['btn_save']))
-{
-  $category_id=$_POST['category_id'];
-  $category_name=$_POST['category_name'];
-  $details=$_POST['details'];
-
-
-    mysqli_query($con,"UPDATE `category` SET `cat_name`='$category_name', `description`='$details' WHERE `cat_ID`=$category_id") or die ("query incorrect");
-    mysqli_close($con);
-    echo "<script> 
-                alert('Category Updated Successfully ');
-                location.href='categories.php'; 
-                </script>";
-                
-  
-  
-  
-  }
+  FunctionController::updateCategory(
+    id: $_POST['category_id'],
+    name: $_POST['category_name'],
+    description: $_POST['details']
+  );
 
 ?>
 <!DOCTYPE html>
@@ -87,13 +53,13 @@ if(isset($_POST['btn_save']))
                 <div class="container"> 
                 <div class="form-group">
                         <label>Category Name</label>
-                        <input type="text" id="category_name" required name="category_name" class="form-control" value='<?php echo $cat_title; ?>'>
-                        <input type="hidden" name="category_id" value='<?php echo $_REQUEST["edit"]; ?>'>
+                        <input type="text" id="category_name" required name="category_name" class="form-control" value='<?php echo $category->name; ?>'>
+                        <input type="hidden" name="category_id" value='<?php echo $category->id; ?>'>
                       </div>
                       <div class="form-group">
                         <label>Description</label>
                         <textarea style="height: auto;" rows="4" cols="80" id="details" required name="details" class="form-control">
-                        <?php echo $cat_descr;?>
+                        <?php echo $category->description;?>
                       </textarea>
                       </div>
                       

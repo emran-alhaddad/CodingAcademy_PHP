@@ -39,6 +39,17 @@
 
       <div id="operations" class="tab-pane fade">
         <h2 class="text-center">Operations of your wallet</h2>
+        <table class="table table-striped">
+          <thead>
+            <th>ID</th>
+            <th>Card Number</th>
+            <th>Operation</th>
+            <th>Date</th>
+          </thead>
+          <tbody id="transactionInfo">
+
+          </tbody>
+        </table>
         <br>
 
       </div>
@@ -55,7 +66,9 @@
       // Load total no.of items added in the cart and display in the navbar
       load_cart_item_number();
       load_wallet_info();
+      load_wallet_transactions();
       $('a[href="#deposit"]').click();
+
 
       $('#push_dollar').on("click", function(e) {
         e.preventDefault();
@@ -85,6 +98,19 @@
           },
           success: function(response) {
             $("#dollarWalletInfo").html(response);
+          }
+        });
+      }
+
+      function load_wallet_transactions() {
+        $.ajax({
+          url: 'action.php',
+          method: 'get',
+          data: {
+            transaction: "transaction"
+          },
+          success: function(response) {
+            $("#transactionInfo").html(response);
           }
         });
       }

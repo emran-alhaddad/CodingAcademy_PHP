@@ -120,19 +120,35 @@ if (isset($_POST['action']) && isset($_POST['action']) == 'order') {
 		return;
 	}
 
-	$stmt = $conn->prepare('INSERT INTO `orders`(`name`, `email`, `phone`, `address`, `products`, `amount_paid`, `card_id`) VALUES(?,?,?,?,?,?,?)');
-	$stmt->bind_param('sssssss', $fullName, $email, $phone, $address, $products, $grand_total,$cardno);
+	$datetime = date('d/m/Y H:i:s');
+
+	// Insert into Orders
+	$stmt = $conn->prepare('INSERT INTO `orders`(`name`, `email`, `phone`, `address`, `products`, `amount_paid`, `card_id`,`date`) VALUES(?,?,?,?,?,?,?,?)');
+	$stmt->bind_param('ssssssss', $fullName, $email, $phone, $address, $products, $grand_total,$cardno,$datetime);
 	$stmt->execute();
 	$stmt2 = $conn->prepare('DELETE FROM cart');
 	$stmt2->execute();
+
+	// Update Wallet Mony 
 	$stmt3 = $conn->prepare('UPDATE wallet SET mony=? WHERE card_id=?');
 	$mony = (floatval($mony)-floatval($grand_total));
 	$stmt3->bind_param('ss',$mony, $cardno);
 	$stmt3->execute();
+
+	// Insert into Wallet Transaction 
+	$stmt4 = $conn->prepare('INSERT INTO `transaction`(`card_id`, `body`, `date`) VALUES(?,?,?)');
+	$body = $fullName. ' Paid $'.$grand_total.' For By '.$products;
+	$stmt4->bind_param('sss',$cardno, $body,$datetime);
+	$stmt4->execute();
+	
 	echo '<div class="alert alert-success alert-dismissible mt-2">
 						  <button type="button" class="close" data-dismiss="alert">&times;</button>
 						  <strong>Order Registered Success</strong>
-						</div>';
+						</div>
+		<script>
+		setInterval(function () {location.href="index.php"}, 5000);
+		</script>
+		';
 	
 }
 
@@ -277,6 +293,7 @@ if (isset($_GET['walletInfo']) && isset($_GET['walletInfo']) == 'walletInfo') {
 	$stmt->execute();
 	$stmt->store_result();
 	$stmt->fetch();
+	$_SESSION['card_id'] = $card_id;
 	
 	if($stmt->num_rows()>0)
 	{
@@ -287,5 +304,33 @@ if (isset($_GET['walletInfo']) && isset($_GET['walletInfo']) == 'walletInfo') {
 	{
 		echo "<p >Wallet Mony: <span style='color:red'>not set</span></p>
 		<p >Wallet Number: <span style='color:red'>not set</span></p>";
+	}
+}
+
+// Get User User Transactions
+if (isset($_GET['transaction']) && isset($_GET['transaction']) == 'transaction') {
+	$card_id = $_SESSION['card_id'];
+	$stmt = $conn->query('SELECT * FROM `transaction` WHERE card_id="'.$card_id.'"');
+
+	if($stmt->num_rows>0)
+	{
+		$data = "";
+		foreach ($stmt->fetch_all() as $key=> $value)
+		
+		echo  "
+		<tr>
+		<td>$value[0]</td>
+		<td>$value[1]</td>
+		<td>$value[2]</td>
+		<td>$value[3]</td>
+
+		</tr>
+		";
+
+		// echo $data;
+	}
+	else
+	{
+		echo "<tr style='color:red;'>No Transactions Yet !!!</tr>";
 	}
 }

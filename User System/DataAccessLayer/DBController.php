@@ -18,18 +18,14 @@ final class DBController
         try {
             self::$con = new PDO(self::SERVER,self::USER,self::PASSWORD);
             if (!self::$con) {
-                die("Connection failed: " );
+                echo "Connection failed: ";
+                exit(0);
             }
         } catch (\Throwable $th) {
             echo "Error In Connection";
             exit();
         }
 
-        try {
-            //code...
-        } catch (\Throwable $th) {
-            //throw $th;
-        }
     }
 
     // check connection status

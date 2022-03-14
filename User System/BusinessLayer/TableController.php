@@ -1,7 +1,7 @@
 <?php
 
 require_once('DataAccessLayer/DBController.php');
-DBController::connectDB();
+// DBController::connectDB();
 
 
  final class TableController{

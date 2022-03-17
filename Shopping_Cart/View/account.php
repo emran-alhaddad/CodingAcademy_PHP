@@ -1,5 +1,5 @@
-<?php session_start(); ?>
-<?php if(!isset($_SESSION['username'])) header("Location:index.php"); ?>
+<?php if (session_status() === PHP_SESSION_NONE) session_start(); ?>
+<?php if (!isset($_SESSION['username'])) header("Location:index.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,12 +9,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Register User</title>
-  <?php include_once('components/styles.php'); ?>
+  <?php include_once('Components/styles.php'); ?>
 </head>
 
 <body>
   <!-- Navbar start -->
-  <?php include_once('components/nav.php'); ?>
+  <?php include_once('Components/nav.php'); ?>
   <!-- Navbar end -->
 
   <div class="container mt-5 mb-5 ">
@@ -57,8 +57,8 @@
 
   </div>
 
-  <script src='assets/js/jquery.min.js'></script>
-  <script src='assets/js/bootstrap.min.js'></script>
+  <?php include_once('Components/links.php'); ?>
+
   <script type="text/javascript">
     $(document).ready(function() {
 
@@ -74,7 +74,7 @@
         e.preventDefault();
 
         $.ajax({
-          url: 'action.php',
+          url: 'server.php',
           method: 'post',
           data: {
             monyDollar: $('#monyDollar').val(),
@@ -87,11 +87,12 @@
 
         });
         load_wallet_info();
+        load_wallet_transactions();
       });
 
       function load_wallet_info() {
         $.ajax({
-          url: 'action.php',
+          url: 'server.php',
           method: 'get',
           data: {
             walletInfo: "walletInfo"
@@ -104,7 +105,7 @@
 
       function load_wallet_transactions() {
         $.ajax({
-          url: 'action.php',
+          url: 'server.php',
           method: 'get',
           data: {
             transaction: "transaction"
@@ -116,21 +117,18 @@
       }
     });
 
-    
     function load_cart_item_number() {
-        $.ajax({
-          url: 'action.php',
-          method: 'get',
-          data: {
-            cartItem: "cart_item"
-          },
-          success: function(response) {
-            $("#cart-item").html(response);
-          }
-        });
-      }
-    
-
+      $.ajax({
+        url: 'server.php',
+        method: 'get',
+        data: {
+          cartItem: "cart_item"
+        },
+        success: function(response) {
+          $("#cart-item").html(response);
+        }
+      });
+    }
   </script>
 </body>
 

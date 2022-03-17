@@ -13,7 +13,7 @@
         </li>
         <?php if(isset($_SESSION['username'])) {?>
         <li class="nav-item">
-          <a class="nav-link" href="action.php?logout=true"><i class="fas fa-user mr-2"></i>Logout</a>
+          <a class="nav-link" href="server.php?logout=true"><i class="fas fa-user mr-2"></i>Logout</a>
         </li>
         <?php }?>
         <li class="nav-item">

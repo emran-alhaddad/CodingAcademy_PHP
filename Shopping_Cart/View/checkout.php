@@ -1,20 +1,11 @@
-<?php session_start(); ?>
-<?php
-require 'config.php';
+<?php if (session_status() === PHP_SESSION_NONE) session_start(); ?>
+<?php require_once('../Controller/PresentationLayer/FunctionController.php'); ?>
+<?php 
 
-$grand_total = 0;
-$allItems = '';
-$items = [];
+$result = FunctionController::getCheckout();
+$grand_total = $result["grand_total"];
+$allItems = $result["allItems"];
 
-$sql = "SELECT CONCAT(product_name, '(',qty,')') AS ItemQty, total_price FROM cart";
-$stmt = $conn->prepare($sql);
-$stmt->execute();
-$result = $stmt->get_result();
-while ($row = $result->fetch_assoc()) {
-  $grand_total += $row['total_price'];
-  $items[] = $row['ItemQty'];
-}
-$allItems = implode('</li><li>', $items);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,15 +16,15 @@ $allItems = implode('</li><li>', $items);
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Checkout</title>
+  <?php include_once('Components/styles.php'); ?>
 
-
-  <?php include_once('components/styles.php'); ?>
   <style>
     .label {
       color: rgb(33 37 41 / 75%);
       margin-left: 5px;
       font-weight: 400;
     }
+
   </style>
   <script>
     function linkChanges(me, id) {
@@ -43,7 +34,7 @@ $allItems = implode('</li><li>', $items);
     function checkout()
       {
         $.ajax({
-          url: 'action.php',
+          url: 'server.php',
           method: 'post',
           data: {
             fullName: $('#fullName').val(),
@@ -68,9 +59,7 @@ $allItems = implode('</li><li>', $items);
 </head>
 
 <body>
-  <?php include_once('components/nav.php'); ?>
-
-
+  <?php include_once('Components/nav.php'); ?>
 
   <div class="container">
   <div id="message"></div>
@@ -183,9 +172,7 @@ $allItems = implode('</li><li>', $items);
 
   </div>
 
-  <script src='assets/js/jquery.min.js'></script>
-  <script src='assets/js/bootstrap.min.js'></script>
-  <script src='assets/js/jquery.smartWizard.min.js'></script>
+  <?php include_once('Components/links.php'); ?>
 
 
   <script type="text/javascript">
@@ -195,7 +182,7 @@ $allItems = implode('</li><li>', $items);
       $("#placeOrder").submit(function(e) {
         e.preventDefault();
         $.ajax({
-          url: 'action.php',
+          url: 'server.php',
           method: 'post',
           data: $('form').serialize() + "&action=order",
           success: function(response) {
@@ -212,7 +199,7 @@ $allItems = implode('</li><li>', $items);
 
       function load_cart_item_number() {
         $.ajax({
-          url: 'action.php',
+          url: 'server.php',
           method: 'get',
           data: {
             cartItem: "cart_item"

@@ -1,8 +1,5 @@
-<?php session_start(); ?>
-<?php
-require_once('config.php');
-?>
-
+<?php if (session_status() === PHP_SESSION_NONE) session_start(); ?>
+<?php require_once('../Controller/PresentationLayer/FunctionController.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,12 +9,13 @@ require_once('config.php');
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Cart</title>
-  <?php include_once('components/styles.php'); ?>
+  <?php include_once('Components/styles.php'); ?>
 </head>
 
 <body>
-<?php include_once('components/nav.php'); ?>
+  <?php include_once('Components/nav.php'); ?>
 
+  <div id="message"></div>
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-lg-10">
@@ -49,54 +47,12 @@ require_once('config.php');
                 <th>Quantity</th>
                 <th>Total Price</th>
                 <th>
-                  <a href="action.php?clear=all" class="badge-danger badge p-1" onclick="return confirm('Are you sure want to clear your cart?');"><i class="fas fa-trash"></i>&nbsp;&nbsp;Clear Cart</a>
+                  <a href="server.php?clear=all" class="badge-danger badge p-1" onclick="return confirm('Are you sure want to clear your cart?');"><i class="fas fa-trash"></i>&nbsp;&nbsp;Clear Cart</a>
                 </th>
               </tr>
             </thead>
             <tbody>
-              <?php
-              $stmt = $conn->prepare('SELECT * FROM cart');
-              $stmt->execute();
-              $result = $stmt->get_result();
-              $grand_total = 0;
-              while ($row = $result->fetch_assoc()) :
-              ?>
-                <tr>
-                  <td><?= $row['id'] ?></td>
-                  <input type="hidden" class="pid" value="<?= $row['id'] ?>">
-                  <td><img src="<?= $row['product_image'] ?>" width="50"></td>
-                  <td><?= $row['product_name'] ?></td>
-                  <td>
-                  <i class="fas fa-dollar-sign"></i>&nbsp;&nbsp;<?= number_format($row['product_price'], 2); ?>
-                  </td>
-                  <input type="hidden" class="pprice" value="<?= $row['product_price'] ?>">
-                  <td>
-                    <div class="qty d-flex">
-                      <button class="btn-minus btn-danger itemQtyMinus"><i class="fa fa-minus"></i></button>
-                      <input type="number" class="form-control itemQty" disabled value="<?= $row['qty'] ?>" style="width:70px;">
-                      <button class="btn-plus btn-primary itemQtyPlus"><i class="fa fa-plus"></i></button>
-                    </div>
-
-
-                  </td>
-                  <td><i class="fas fa-dollar-sign"></i>&nbsp;&nbsp;<?= number_format($row['total_price'], 2); ?></td>
-                  <td>
-                    <a href="action.php?remove=<?= $row['id'] ?>" class="text-danger lead" onclick="return confirm('Are you sure want to remove this item?');"><i class="fas fa-trash-alt"></i></a>
-                  </td>
-                </tr>
-                <?php $grand_total += $row['total_price']; ?>
-              <?php endwhile; ?>
-              <tr>
-                <td colspan="3">
-                  <a href="index.php" class="btn btn-success"><i class="fas fa-cart-plus"></i>&nbsp;&nbsp;Continue
-                    Shopping</a>
-                </td>
-                <td colspan="2"><b>Grand Total</b></td>
-                <td><b><i class="fas fa-dollar-sign"></i>&nbsp;&nbsp;<?= number_format($grand_total, 2); ?></b></td>
-                <td>
-                  <a href="checkout.php" class="btn btn-info <?= ($grand_total > 1) ? '' : 'disabled'; ?>"><i class="far fa-credit-card"></i>&nbsp;&nbsp;Checkout</a>
-                </td>
-              </tr>
+              <?php FunctionController::showCartProducts(); ?>
             </tbody>
           </table>
         </div>
@@ -104,14 +60,14 @@ require_once('config.php');
     </div>
   </div>
 
-  <script src='assets/js/jquery.min.js'></script>
-  <script src='assets/js/bootstrap.min.js'></script>
+  <?php include_once('Components/links.php'); ?>
+
 
   <script type="text/javascript">
     $(document).ready(function() {
 
       // Change the item quantity
-      $(".itemQtyPlus").on("click",function(){
+      $(".itemQtyPlus").on("click", function() {
         var $el = $(this).closest('tr');
         var qt = Number($el.find(".itemQty").val());
         qt++;
@@ -119,10 +75,10 @@ require_once('config.php');
         $el.find(".itemQty").change();
       })
 
-      $(".itemQtyMinus").on("click",function(){
+      $(".itemQtyMinus").on("click", function() {
         var $el = $(this).closest('tr');
         var qt = Number($el.find(".itemQty").val());
-        if(qt<=1) return;
+        if (qt <= 1) return;
         qt--;
         $el.find(".itemQty").val(qt);
         $el.find(".itemQty").change();
@@ -136,7 +92,7 @@ require_once('config.php');
         var qty = $el.find(".itemQty").val();
         location.reload(true);
         $.ajax({
-          url: 'action.php',
+          url: 'server.php',
           method: 'post',
           cache: false,
           data: {
@@ -145,7 +101,7 @@ require_once('config.php');
             pprice: pprice
           },
           success: function(response) {
-            console.log(response);
+            // $("#message").html(response);
           }
         });
       });
@@ -155,7 +111,7 @@ require_once('config.php');
 
       function load_cart_item_number() {
         $.ajax({
-          url: 'action.php',
+          url: 'server.php',
           method: 'get',
           data: {
             cartItem: "cart_item"

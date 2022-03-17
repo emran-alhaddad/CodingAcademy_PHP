@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 14, 2022 at 10:34 AM
+-- Generation Time: Mar 17, 2022 at 09:06 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.0.13
 
@@ -38,7 +38,8 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`id`, `product_name`, `product_price`, `product_image`, `qty`, `total_price`, `product_code`) VALUES
-(16, 'Zenfone Max Pro', '15000', 'image/zenfone_m1.jpg', 7, '105000', 'p1006');
+(40, 'MI Note 5 Pro', '15000', 'mi_note_5_pro.jpg', 1, '15000', 'p1003'),
+(41, 'Apple iPhone X', '90000', 'iphone_x.jpg', 8, '720000', 'p1000');
 
 -- --------------------------------------------------------
 
@@ -69,7 +70,9 @@ INSERT INTO `orders` (`id`, `name`, `email`, `phone`, `address`, `products`, `am
 (6, 'Emran AlHaddad', 'alhaddademran@gmail.com', '+967770774255', 'Yemen - Taiz', 'Zenfone Max Pro(1)', '15000', '3003170330', '13/03/2022 08:28:33'),
 (7, 'Emran AlHaddad', 'alhaddademran@gmail.com', '+967770774255', 'Yemen - Taiz', 'Zenfone Max Pro(1)', '15000', '3003170330', '13/03/2022 08:29:25'),
 (8, 'Emran AlHaddad', 'alhaddademran@gmail.com', '+967770774255', 'Yemen - Taiz', 'Samsung A50(1)', '25000', '3003170330', '13/03/2022 09:12:44'),
-(9, 'Emran AlHaddad', 'alhaddademran@gmail.com', '+967770774255', 'Yemen - Taiz', 'Apple iPhone X(9)</li><li>Huawei 10 Pro(1)</li><li>LG v30(1)', '950000', '3003170330', '13/03/2022 09:30:05');
+(9, 'Emran AlHaddad', 'alhaddademran@gmail.com', '+967770774255', 'Yemen - Taiz', 'Apple iPhone X(9)</li><li>Huawei 10 Pro(1)</li><li>LG v30(1)', '950000', '3003170330', '13/03/2022 09:30:05'),
+(10, 'Emran AlHaddad', 'alhaddademran@gmail.com', '+967770774255', 'Yemen - Taiz', 'Zenfone Max Pro(1)', '15000', '3003170330', '15/03/2022 13:26:55'),
+(11, 'Emran AlHaddad', 'alhaddademran@gmail.com', '+967770774255', 'Yemen - Taiz', 'MI Note 5 Pro(1)</li><li>LG v30(1)</li><li>Huawei 10 Pro(2)', '230000', '3003170330', '17/03/2022 08:38:52');
 
 -- --------------------------------------------------------
 
@@ -120,7 +123,16 @@ CREATE TABLE `transaction` (
 INSERT INTO `transaction` (`id`, `card_id`, `body`, `date`) VALUES
 (4, '3003170330', 'Emran AlHaddad Paid $15000 For By Zenfone Max Pro(1)', '13/03/2022 08:29:25'),
 (5, '3003170330', 'Emran AlHaddad Paid $25000 For By Samsung A50(1)', '13/03/2022 09:12:44'),
-(6, '3003170330', 'Emran AlHaddad Paid $950000 For By Apple iPhone X(9)</li><li>Huawei 10 Pro(1)</li><li>LG v30(1)', '13/03/2022 09:30:05');
+(6, '3003170330', 'Emran AlHaddad Paid $950000 For By Apple iPhone X(9)</li><li>Huawei 10 Pro(1)</li><li>LG v30(1)', '13/03/2022 09:30:05'),
+(7, '3003170330', 'You Deposite ( $50005 ) To Wallet with Number 3003170330', '14/03/2022 22:07:09'),
+(8, '3003170330', 'You Deposite ( $20 ) To Wallet with Number (  )    Now You Have ( $50030 ) In Your Wallet', '14/03/2022 22:11:54'),
+(9, '3003170330', 'You Deposite ( $13 ) To Wallet with Number ( 3003170330 )    Now You Have ( $50043 ) In Your Wallet', '14/03/2022 22:12:49'),
+(10, '3004477394', 'You Deposite ( $5 ) To Wallet with Number ( 3004477394 )    Now You Have ( $100015 ) In Your Wallet', '14/03/2022 22:16:10'),
+(11, '3003170330', 'You Deposite ( $1000 ) To Wallet with Number ( 3003170330 )    Now You Have ( $52043 ) In Your Wallet', '15/03/2022 13:13:24'),
+(12, '3003170330', 'You Deposite ( $4000 ) To Wallet with Number ( 3003170330 )    Now You Have ( $59043 ) In Your Wallet', '15/03/2022 13:14:35'),
+(13, '3003170330', 'Emran AlHaddad Paid $15000 For By Zenfone Max Pro(1)', '15/03/2022 13:26:55'),
+(14, '3003170330', 'You Deposite ( $500000 ) To Wallet with Number ( 3003170330 )    Now You Have ( $544043 ) In Your Wallet', '17/03/2022 08:38:01'),
+(15, '3003170330', 'Emran AlHaddad Paid ( $230000 ) For Buy This Products: <ul><li>MI Note 5 Pro(1)</li><li>LG v30(1)</li><li>Huawei 10 Pro(2)</li></ul>', '17/03/2022 08:38:52');
 
 -- --------------------------------------------------------
 
@@ -145,7 +157,8 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`id`, `username`, `password`, `fullName`, `address`, `phone`, `email`) VALUES
 (9, 'EmranCo', 'e72ec440e673e26ca36cc20773048fb5', 'Emran AlHaddad', 'Yemen', '+967770774255', 'alhaddademran@gmail.com'),
 (10, 'Osama', '81dc9bdb52d04dc20036dbd8313ed055', 'Osama Al-Wafi', 'Taiz', '777777777', 'osama@gmail.com'),
-(11, 'Fatima', '81dc9bdb52d04dc20036dbd8313ed055', 'Fatima Al-mashoor', 'Taiz', '77777777', 'fatima@gmail.com');
+(11, 'Fatima', '81dc9bdb52d04dc20036dbd8313ed055', 'Fatima Al-mashoor', 'Taiz', '77777777', 'fatima@gmail.com'),
+(12, 'Admin', 'e3afed0047b08059d0fada10f400c1e5', 'Admin', 'Yemen', '7777777777', 'admin@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -165,9 +178,9 @@ CREATE TABLE `wallet` (
 --
 
 INSERT INTO `wallet` (`id`, `user_id`, `card_id`, `mony`) VALUES
-(3, 9, '3003170330', '50000'),
+(3, 9, '3003170330', '314043'),
 (4, 10, '3004422953', '100'),
-(5, 11, '3004477394', '100010');
+(5, 11, '3004477394', '100015');
 
 --
 -- Indexes for dumped tables
@@ -219,25 +232,25 @@ ALTER TABLE `wallet`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `transaction`
 --
 ALTER TABLE `transaction`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `wallet`

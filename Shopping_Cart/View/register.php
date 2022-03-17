@@ -1,4 +1,4 @@
-<?php session_start(); ?>
+<?php if (session_status() === PHP_SESSION_NONE) session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,12 +8,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Register User</title>
-    <?php include_once('components/styles.php'); ?>
+    <?php include_once('Components/styles.php'); ?>
 </head>
 
 <body>
     <!-- Navbar start -->
-    <?php include_once('components/nav.php'); ?>
+    <?php include_once('Components/nav.php'); ?>
     <!-- Navbar end -->
 
     <div class="container mt-5 mb-5 ">
@@ -81,8 +81,7 @@
 
     </div>
 
-    <script src='assets/js/jquery.min.js'></script>
-    <script src='assets/js/bootstrap.min.js'></script>
+    <?php include_once('Components/links.php'); ?>
     <script type="text/javascript">
   $(document).ready(function() {
 
@@ -99,7 +98,7 @@
       var email = $form.find("#email").val();
 
       $.ajax({
-        url: 'action.php',
+        url: 'server.php',
         method: 'post',
         data: {
             username: username,
@@ -126,7 +125,7 @@
       var password = $form.find("#login_password").val();
 
       $.ajax({
-        url: 'action.php',
+        url: 'server.php',
         method: 'post',
         data: {
             username: username,
@@ -145,7 +144,7 @@
     $('a[href="#login"]').click();
     function load_cart_item_number() {
       $.ajax({
-        url: 'action.php',
+        url: 'server.php',
         method: 'get',
         data: {
           cartItem: "cart_item"

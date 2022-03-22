@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Library | Taiz</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/account-style.css">
+    <link rel="stylesheet" href="assets/css/carousel.css">
+    <link id="pageStyle" rel="stylesheet" href="assets/css/arabicStyle.css">
+</head>
+
+<body onload="allCounters()">
+
+    <!-- Start Header -->
+    <header>
+        <nav id="menuNav">
+            <ul id="menueList">
+                <li onclick="showModule('sign-in');"> <img src="assets/icons/svgexport-1.svg" alt=""> ادخل حسابك أو سجل الأن </li>
+                <li>
+                    <a href="index.html"><img src="assets/icons/svgexport-54.svg" alt="">الرئيسية</a>
+                </li>
+                <li>
+                    <a href="about.html"><img src="assets/icons/svgexport-3.svg" alt="">من نحن </a>
+                </li>
+                <li>
+                    <a href="contact.html"><img src="assets/icons/svgexport-4.svg" alt="">أتصل بنا </a>
+                </li>
+                <li>
+                    <a href="help.html"><img src="assets/icons/svgexport-5.svg" alt="">المساعدة</a>
+                </li>
+                <li>
+                    <a href="privacy.html"><img src="assets/icons/svgexport-11.svg" alt="">سياسة الخصوصية</a>
+                </li>
+                <li><img src="assets/icons/svgexport-12.svg" alt="">اليمن YER</li>
+                <li onclick="changeLanguage();" id="languageBtn"><img src="assets/icons/English.svg" alt=""> English</li>
+            </ul>
+
+        </nav>
+
+        <img onclick="toggleMenue();" id="menueBtn" src="assets/icons/Menue.svg" alt="">
+
+    </header>
+    <!-- End Header -->
+
+    <!-- Start Body Section -->
+    <section class="body">
+
+        <section class="search_logo">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="assets/images/eLibrary_logo_web.jpg" alt="Logo">
+                </a>
+            </div>
+            <form action="" class="searchBox">
+                <input type="text" name="seach" id="search" onkeyup="search_books();">
+                <input type="submit" value="">
+            </form>
+            <div class="bag">
+                <div style="position:relative ;">
+                    <span id="BagCounter"></span>
+                    <a href="shopBag.html">
+                        <img src="assets/icons/svgexport-51.svg" id="BagImage" alt="">
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Start Carosal  -->
+        <section class="carousel hide">
+            <div class="carouselSlider animation">
+                <img src="assets/images/banner1.jpg" alt="">
+            </div>
+            <div class="carouselSlider animation">
+                <img src="assets/images/banner2.jpg" alt="">
+            </div>
+            <div class="carouselSlider animation">
+                <img src="assets/images/banner3.jpg" alt="">
+            </div>
+            <div class="carouselSlider animation">
+                <img src="assets/images/banner4.jpg" alt="">
+            </div>
+
+            <!-- Navigation arrows -->
+            <a class="carouselLeftBtn" onclick="nextPrev(-1)">❯</a>
+            <a class="carouselRightBtn" onclick="nextPrev(1)">❮</a>
+
+            <!-- Navigation Icons -->
+            <div class="carouselIcons">
+                <span class="carouselIcon"></span>
+                <span class="carouselIcon"></span>
+                <span class="carouselIcon"></span>
+                <span class="carouselIcon"></span>
+            </div>
+
+        </section>
+        <!-- End Carosal  -->
+
+        <!-- Categories Sction -->
+        <section class=" categories hide">
+            <h1> تصفح حسب القسم</h1>
+            <div class="container slider">
+                <a class="simpleCard" href="#sec1">
+                    <img src="assets/icons/svgexport-45.svg" alt="" srcset="">
+                    <h2>دين</h2>
+                </a>
+
+                <a href="#sec2" class="simpleCard">
+                    <img src="assets/icons/svgexport-41.svg" alt="" srcset="">
+                    <h2>تاريخ</h2>
+                </a>
+
+                <a href="#sec6" class="simpleCard">
+                    <img src="assets/icons/svgexport-39.svg" alt="" srcset="">
+                    <h2>روايات</h2>
+                </a>
+
+                <a href="#sec3" class="simpleCard">
+                    <img src="assets/icons/svgexport-42.svg" alt="" srcset="">
+                    <h2>سياسة</h2>
+                </a>
+
+                <a href="#sec4" class="simpleCard">
+                    <img src="assets/icons/svgexport-44.svg" alt="" srcset="">
+                    <h2>اقتصاد</h2>
+                </a>
+
+                <a href="#sec5" class="simpleCard">
+                    <img src="assets/icons/svgexport-46.svg" alt="" srcset="">
+                    <h2>طبخ</h2>
+                </a>
+
+                <a href="#" class="simpleCard">
+                    <img src="assets/icons/svgexport-47.svg" alt="" srcset="">
+                    <h2>تربية</h2>
+                </a>
+            </div>
+        </section>
+
+        <!-- End Categories Section  -->
+
+        <section class="adds hide">
+
+            <div>
+                <img src="assets/images/Adds.jpg" width="100%" alt="">
+            </div>
+        </section>
+
+        <section class="presentations">
+            <div class="oneLineDiv">
+                <h1> العروض الحالية</h1>
+                <a href="category.html">عرض الكل</a>
+            </div>
+            <div class="container slider">
+                <div class="card">
+                    <a href="details.html" class="header">
+                        <img src="assets/images/Books/Book1.jpg" alt="" srcset="">
+                    </a>
+                    <a href="details.html" class="body">
+                        <h1><img src="assets/images/bookIcon.png" alt="">كتاب إلكتروني</h1>
+                        <div class="rating">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                        </div>
+                        <p class="BoookTitle">كبرياء وهوى (كتاب إلكتروني)</p>
+                        <h2>17.99 <sub>رس</sub></h2>
+                        <span>صيغ أخرى:</span>
+                        <a href="#">كتاب مطبوع</a>
+                        <h5 class="lastOfferText" id="lastOffers1"></h5>
+                    </a>
+                    <div class="footer">
+                        <img src="assets/icons/svgexport-55.svg" alt="transfere" srcset="">
+                        <img class="origin" src="assets/icons/cart-2.svg" alt="shopbag" srcset="">
+                        <img src="assets/icons/svgexport-54.svg" alt="star" srcset="">
+                    </div>
+                </div>
+
+                <div class="card">
+                    <a href="details.html" class="header">
+                        <img src="assets/images/Books/Book2.jpg" alt="" srcset="">
+                    </a>
+                    <a href="details.html" class="body">
+                        <h1><img src="assets/images/bookIcon.png" alt="">كتاب إلكتروني</h1>
+                        <div class="rating">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                        </div>
+                        <p class="BoookTitle">خلف قوتي ضعف يحبك (كتاب إلكتروني)</p>
+                        <h2>24.99 <sub>رس</sub></h2>
+                        <span>صيغ أخرى:</span>
+                        <a href="#">كتاب مطبوع</a>
+                        <h5 class="lastOfferText" id="lastOffers2"></h5>
+                    </a>
+                    <div class="footer">
+                        <img src="assets/icons/svgexport-55.svg" alt="transfere" srcset="">
+                        <img class="origin" src="assets/icons/cart-2.svg" alt="shopbag" srcset="">
+                        <img src="assets/icons/svgexport-54.svg" alt="star" srcset="">
+                    </div>
+                </div>
+
+                <div class="card">
+                    <a href="details.html" class="header">
+                        <img src="assets/images/Books/Book3.jpg" alt="" srcset="">
+                    </a>
+                    <a href="details.html" class="body">
+                        <h1><img src="assets/images/bookIcon.png" alt="">كتاب إلكتروني</h1>
+                        <div class="rating">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                        </div>
+                        <p class="BoookTitle">كتالوج الحب (كتاب إلكتروني)</p>
+                        <h2>19.99 <sub>رس</sub></h2>
+                        <span>صيغ أخرى:</span>
+                        <a href="#">كتاب مطبوع</a>
+                        <h5 class="lastOfferText" id="lastOffers3"></h5>
+                    </a>
+                    <div class="footer">
+                        <img src="assets/icons/svgexport-55.svg" alt="transfere" srcset="">
+                        <img class="origin" src="assets/icons/cart-2.svg" alt="shopbag" srcset="">
+                        <img src="assets/icons/svgexport-54.svg" alt="star" srcset="">
+                    </div>
+                </div>
+
+                <div class="card">
+                    <a href="details.html" class="header">
+                        <img src="assets/images/Books/Book4.jpg" alt="" srcset="">
+                    </a>
+                    <a href="details.html" class="body">
+                        <h1><img src="assets/images/bookIcon.png" alt="">كتاب إلكتروني</h1>
+                        <div class="rating">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                        </div>
+                        <p class="BoookTitle">إلى الذي أسرني حبه (كتاب إلكتروني)</p>
+                        <h2>19.99 <sub>رس</sub></h2>
+                        <span>صيغ أخرى:</span>
+                        <a href="#">كتاب مطبوع</a>
+                        <h5 class="lastOfferText" id="lastOffers4"></h5>
+                    </a>
+                    <div class="footer">
+                        <img src="assets/icons/svgexport-55.svg" alt="transfere" srcset="">
+                        <img class="origin" src="assets/icons/cart-2.svg" alt="shopbag" srcset="">
+                        <img src="assets/icons/svgexport-54.svg" alt="star" srcset="">
+                    </div>
+                </div>
+
+                <div class="card">
+                    <a href="details.html" class="header">
+                        <img src="assets/images/Books/Book5.jpg" alt="" srcset="">
+                    </a>
+                    <a href="details.html" class="body">
+                        <h1><img src="assets/images/bookIcon.png" alt=""> كتاب إلكتروني</h1>
+                        <div class="rating">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                        </div>
+                        <p class="BoookTitle">زواج غير متوقع (كتاب إلكتروني)</p>
+                        <h2>3.99 <sub>رس</sub></h2>
+                        <span>صيغ أخرى:</span>
+                        <a href="#">كتاب مطبوع</a>
+                        <h5 class="lastOfferText" id="lastOffers5"></h5>
+                    </a>
+                    <div class="footer">
+                        <img src="assets/icons/svgexport-55.svg" alt="transfere" srcset="">
+                        <img class="origin" src="assets/icons/cart-2.svg" alt="shopbag" srcset="">
+                        <img src="assets/icons/svgexport-54.svg" alt="star" srcset="">
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="sec1" class="oneLineDiv">
+                <h1> الكتب الدينية</h1>
+                <a href="category.html">عرض الكل</a>
+            </div>
+            <div class="container slider">
+                <div class="card">
+                    <a href="details.html" class="header">
+                        <img src="assets/images/Books/Book1.jpg" alt="" srcset="">
+                    </a>
+                    <a href="details.html" class="body">
+                        <h1><img src="assets/images/bookIcon.png" alt="">كتاب إلكتروني</h1>
+                        <div class="rating">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                        </div>
+                        <p class="BoookTitle">كبرياء وهوى (كتاب إلكتروني)</p>
+                        <h2>17.99 <sub>رس</sub></h2>
+                        <span>صيغ أخرى:</span>
+                        <a href="#">كتاب مطبوع</a>
+                    </a>
+                    <div class="footer">
+                        <img src="assets/icons/svgexport-55.svg" alt="transfere" srcset="">
+                        <img class="origin" src="assets/icons/cart-2.svg" alt="shopbag" srcset="">
+                        <img src="assets/icons/svgexport-54.svg" alt="star" srcset="">
+                    </div>
+                </div>
+
+                <div class="card">
+                    <a href="details.html" class="header">
+                        <img src="assets/images/Books/Book2.jpg" alt="" srcset="">
+                    </a>
+                    <a href="details.html" class="body">
+                        <h1><img src="assets/images/bookIcon.png" alt="">كتاب إلكتروني</h1>
+                        <div class="rating">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                        </div>
+                        <p class="BoookTitle">خلف قوتي ضعف يحبك (كتاب إلكتروني)</p>
+                        <h2>24.99 <sub>رس</sub></h2>
+                        <span>صيغ أخرى:</span>
+                        <a href="#">كتاب مطبوع</a>
+                    </a>
+                    <div class="footer">
+                        <img src="assets/icons/svgexport-55.svg" alt="transfere" srcset="">
+                        <img class="origin" src="assets/icons/cart-2.svg" alt="shopbag" srcset="">
+                        <img src="assets/icons/svgexport-54.svg" alt="star" srcset="">
+                    </div>
+                </div>
+
+                <div class="card">
+                    <a href="details.html" class="header">
+                        <img src="assets/images/Books/Book3.jpg" alt="" srcset="">
+                    </a>
+                    <a href="details.html" class="body">
+                        <h1><img src="assets/images/bookIcon.png" alt="">كتاب إلكتروني</h1>
+                        <div class="rating">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                        </div>
+                        <p class="BoookTitle">كتالوج الحب (كتاب إلكتروني)</p>
+                        <h2>19.99 <sub>رس</sub></h2>
+                        <span>صيغ أخرى:</span>
+                        <a href="#">كتاب مطبوع</a>
+                    </a>
+                    <div class="footer">
+                        <img src="assets/icons/svgexport-55.svg" alt="transfere" srcset="">
+                        <img class="origin" src="assets/icons/cart-2.svg" alt="shopbag" srcset="">
+                        <img src="assets/icons/svgexport-54.svg" alt="star" srcset="">
+                    </div>
+                </div>
+
+                <div class="card">
+                    <a href="details.html" class="header">
+                        <img src="assets/images/Books/Book4.jpg" alt="" srcset="">
+                    </a>
+                    <a href="details.html" class="body">
+                        <h1><img src="assets/images/bookIcon.png" alt="">كتاب إلكتروني</h1>
+                        <div class="rating">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                        </div>
+                        <div class="rating">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                        </div>
+                        <p class="BoookTitle">إلى الذي أسرني حبه (كتاب إلكتروني)</p>
+                        <h2>19.99 <sub>رس</sub></h2>
+                        <span>صيغ أخرى:</span>
+                        <a href="#">كتاب مطبوع</a>
+                    </a>
+                    <div class="footer">
+                        <img src="assets/icons/svgexport-55.svg" alt="transfere" srcset="">
+                        <img class="origin" src="assets/icons/cart-2.svg" alt="shopbag" srcset="">
+                        <img src="assets/icons/svgexport-54.svg" alt="star" srcset="">
+                    </div>
+                </div>
+
+                <div class="card">
+                    <a href="details.html" class="header">
+                        <img src="assets/images/Books/Book5.jpg" alt="" srcset="">
+                    </a>
+                    <a href="details.html" class="body">
+                        <h1><img src="assets/images/bookIcon.png" alt=""> كتاب إلكتروني</h1>
+                        <div class="rating">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                        </div>
+                        <p class="BoookTitle">زواج غير متوقع (كتاب إلكتروني)</p>
+                        <h2>3.99 <sub>رس</sub></h2>
+                        <span>صيغ أخرى:</span>
+                        <a href="#">كتاب مطبوع</a>
+                    </a>
+                    <div class="footer">
+                        <img src="assets/icons/svgexport-55.svg" alt="transfere" srcset="">
+                        <img class="origin" src="assets/icons/cart-2.svg" alt="shopbag" srcset="">
+                        <img src="assets/icons/svgexport-54.svg" alt="star" srcset="">
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="oneLineDiv">
+                <h1> الكتب التاريخية</h1>
+                <a href="category.html">عرض الكل</a>
+            </div>
+            <div class="container slider">
+                <div class="card">
+                    <a href="details.html" class="header">
+                        <img src="assets/images/Books/Book1.jpg" alt="" srcset="">
+                    </a>
+                    <a href="details.html" class="body">
+                        <h1><img src="assets/images/bookIcon.png" alt="">كتاب إلكتروني</h1>
+                        <div class="rating">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                        </div>
+                        <p class="BoookTitle">كبرياء وهوى (كتاب إلكتروني)</p>
+                        <h2>17.99 <sub>رس</sub></h2>
+                        <span>صيغ أخرى:</span>
+                        <a href="#">كتاب مطبوع</a>
+                    </a>
+                    <div class="footer">
+                        <img src="assets/icons/svgexport-55.svg" alt="transfere" srcset="">
+                        <img class="origin" src="assets/icons/cart-2.svg" alt="shopbag" srcset="">
+                        <img src="assets/icons/svgexport-54.svg" alt="star" srcset="">
+                    </div>
+                </div>
+
+                <div class="card">
+                    <a href="details.html" class="header">
+                        <img src="assets/images/Books/Book2.jpg" alt="" srcset="">
+                    </a>
+                    <a href="details.html" class="body">
+                        <h1><img src="assets/images/bookIcon.png" alt="">كتاب إلكتروني</h1>
+                        <div class="rating">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                        </div>
+                        <p class="BoookTitle">خلف قوتي ضعف يحبك (كتاب إلكتروني)</p>
+                        <h2>24.99 <sub>رس</sub></h2>
+                        <span>صيغ أخرى:</span>
+                        <a href="#">كتاب مطبوع</a>
+                    </a>
+                    <div class="footer">
+                        <img src="assets/icons/svgexport-55.svg" alt="transfere" srcset="">
+                        <img class="origin" src="assets/icons/cart-2.svg" alt="shopbag" srcset="">
+                        <img src="assets/icons/svgexport-54.svg" alt="star" srcset="">
+                    </div>
+                </div>
+
+                <div class="card">
+                    <a href="details.html" class="header">
+                        <img src="assets/images/Books/Book3.jpg" alt="" srcset="">
+                    </a>
+                    <a href="details.html" class="body">
+                        <h1><img src="assets/images/bookIcon.png" alt="">كتاب إلكتروني</h1>
+                        <div class="rating">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                        </div>
+                        <p class="BoookTitle">كتالوج الحب (كتاب إلكتروني)</p>
+                        <h2>19.99 <sub>رس</sub></h2>
+                        <span>صيغ أخرى:</span>
+                        <a href="#">كتاب مطبوع</a>
+                    </a>
+                    <div class="footer">
+                        <img src="assets/icons/svgexport-55.svg" alt="transfere" srcset="">
+                        <img class="origin" src="assets/icons/cart-2.svg" alt="shopbag" srcset="">
+                        <img src="assets/icons/svgexport-54.svg" alt="star" srcset="">
+                    </div>
+                </div>
+
+                <div class="card">
+                    <a href="details.html" class="header">
+                        <img src="assets/images/Books/Book4.jpg" alt="" srcset="">
+                    </a>
+                    <a href="details.html" class="body">
+                        <h1><img src="assets/images/bookIcon.png" alt="">كتاب إلكتروني</h1>
+                        <div class="rating">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                        </div>
+                        <p class="BoookTitle">إلى الذي أسرني حبه (كتاب إلكتروني)</p>
+                        <h2>19.99 <sub>رس</sub></h2>
+                        <span>صيغ أخرى:</span>
+                        <a href="#">كتاب مطبوع</a>
+                    </a>
+                    <div class="footer">
+                        <img src="assets/icons/svgexport-55.svg" alt="transfere" srcset="">
+                        <img class="origin" src="assets/icons/cart-2.svg" alt="shopbag" srcset="">
+                        <img src="assets/icons/svgexport-54.svg" alt="star" srcset="">
+                    </div>
+                </div>
+
+                <div class="card">
+                    <a href="details.html" class="header">
+                        <img src="assets/images/Books/Book5.jpg" alt="" srcset="">
+                    </a>
+                    <a href="details.html" class="body">
+                        <h1><img src="assets/images/bookIcon.png" alt=""> كتاب إلكتروني</h1>
+                        <div class="rating">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                        </div>
+                        <p class="BoookTitle">زواج غير متوقع (كتاب إلكتروني)</p>
+                        <h2>3.99 <sub>رس</sub></h2>
+                        <span>صيغ أخرى:</span>
+                        <a href="#">كتاب مطبوع</a>
+                    </a>
+                    <div class="footer">
+                        <img src="assets/icons/svgexport-55.svg" alt="transfere" srcset="">
+                        <img class="origin" src="assets/icons/cart-2.svg" alt="shopbag" srcset="">
+                        <img src="assets/icons/svgexport-54.svg" alt="star" srcset="">
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="sec2" class="oneLineDiv">
+                <h1> السايسة</h1>
+                <a href="category.html">عرض الكل</a>
+            </div>
+            <div class="container slider">
+                <div class="card">
+                    <a href="details.html" class="header">
+                        <img src="assets/images/Books/Book1.jpg" alt="" srcset="">
+                    </a>
+                    <a href="details.html" class="body">
+                        <h1><img src="assets/images/bookIcon.png" alt="">كتاب إلكتروني</h1>
+                        <div class="rating">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                        </div>
+                        <p class="BoookTitle">كبرياء وهوى (كتاب إلكتروني)</p>
+                        <h2>17.99 <sub>رس</sub></h2>
+                        <span>صيغ أخرى:</span>
+                        <a href="#">كتاب مطبوع</a>
+                    </a>
+                    <div class="footer">
+                        <img src="assets/icons/svgexport-55.svg" alt="transfere" srcset="">
+                        <img class="origin" src="assets/icons/cart-2.svg" alt="shopbag" srcset="">
+                        <img src="assets/icons/svgexport-54.svg" alt="star" srcset="">
+                    </div>
+                </div>
+
+                <div class="card">
+                    <a href="details.html" class="header">
+                        <img src="assets/images/Books/Book2.jpg" alt="" srcset="">
+                    </a>
+                    <a href="details.html" class="body">
+                        <h1><img src="assets/images/bookIcon.png" alt="">كتاب إلكتروني</h1>
+                        <div class="rating">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                        </div>
+                        <p class="BoookTitle">خلف قوتي ضعف يحبك (كتاب إلكتروني)</p>
+                        <h2>24.99 <sub>رس</sub></h2>
+                        <span>صيغ أخرى:</span>
+                        <a href="#">كتاب مطبوع</a>
+                    </a>
+                    <div class="footer">
+                        <img src="assets/icons/svgexport-55.svg" alt="transfere" srcset="">
+                        <img class="origin" src="assets/icons/cart-2.svg" alt="shopbag" srcset="">
+                        <img src="assets/icons/svgexport-54.svg" alt="star" srcset="">
+                    </div>
+                </div>
+
+                <div class="card">
+                    <a href="details.html" class="header">
+                        <img src="assets/images/Books/Book3.jpg" alt="" srcset="">
+                    </a>
+                    <a href="details.html" class="body">
+                        <h1><img src="assets/images/bookIcon.png" alt="">كتاب إلكتروني</h1>
+                        <div class="rating">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                        </div>
+                        <p class="BoookTitle">كتالوج الحب (كتاب إلكتروني)</p>
+                        <h2>19.99 <sub>رس</sub></h2>
+                        <span>صيغ أخرى:</span>
+                        <a href="#">كتاب مطبوع</a>
+                    </a>
+                    <div class="footer">
+                        <img src="assets/icons/svgexport-55.svg" alt="transfere" srcset="">
+                        <img class="origin" src="assets/icons/cart-2.svg" alt="shopbag" srcset="">
+                        <img src="assets/icons/svgexport-54.svg" alt="star" srcset="">
+                    </div>
+                </div>
+
+                <div class="card">
+                    <a href="details.html" class="header">
+                        <img src="assets/images/Books/Book4.jpg" alt="" srcset="">
+                    </a>
+                    <a href="details.html" class="body">
+                        <h1><img src="assets/images/bookIcon.png" alt="">كتاب إلكتروني</h1>
+                        <div class="rating">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                        </div>
+                        <p class="BoookTitle">إلى الذي أسرني حبه (كتاب إلكتروني)</p>
+                        <h2>19.99 <sub>رس</sub></h2>
+                        <span>صيغ أخرى:</span>
+                        <a href="#">كتاب مطبوع</a>
+                    </a>
+                    <div class="footer">
+                        <img src="assets/icons/svgexport-55.svg" alt="transfere" srcset="">
+                        <img class="origin" src="assets/icons/cart-2.svg" alt="shopbag" srcset="">
+                        <img src="assets/icons/svgexport-54.svg" alt="star" srcset="">
+                    </div>
+                </div>
+
+                <div class="card">
+                    <a href="details.html" class="header">
+                        <img src="assets/images/Books/Book5.jpg" alt="" srcset="">
+                    </a>
+                    <a href="details.html" class="body">
+                        <h1><img src="assets/images/bookIcon.png" alt=""> كتاب إلكتروني</h1>
+                        <div class="rating">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                        </div>
+                        <p class="BoookTitle">زواج غير متوقع (كتاب إلكتروني)</p>
+                        <h2>3.99 <sub>رس</sub></h2>
+                        <span>صيغ أخرى:</span>
+                        <a href="#">كتاب مطبوع</a>
+                    </a>
+                    <div class="footer">
+                        <img src="assets/icons/svgexport-55.svg" alt="transfere" srcset="">
+                        <img class="origin" src="assets/icons/cart-2.svg" alt="shopbag" srcset="">
+                        <img src="assets/icons/svgexport-54.svg" alt="star" srcset="">
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div id="sec3" class="oneLineDiv">
+                <h1> الأقتصاد</h1>
+                <a href="category.html">عرض الكل</a>
+            </div>
+            <div class="container slider">
+                <div class="card">
+                    <a href="details.html" class="header">
+                        <img src="assets/images/Books/Book1.jpg" alt="" srcset="">
+                    </a>
+                    <a href="details.html" class="body">
+                        <h1><img src="assets/images/bookIcon.png" alt="">كتاب إلكتروني</h1>
+                        <div class="rating">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                        </div>
+                        <p class="BoookTitle">كبرياء وهوى (كتاب إلكتروني)</p>
+                        <h2>17.99 <sub>رس</sub></h2>
+                        <span>صيغ أخرى:</span>
+                        <a href="#">كتاب مطبوع</a>
+                    </a>
+                    <div class="footer">
+                        <img src="assets/icons/svgexport-55.svg" alt="transfere" srcset="">
+                        <img class="origin" src="assets/icons/cart-2.svg" alt="shopbag" srcset="">
+                        <img src="assets/icons/svgexport-54.svg" alt="star" srcset="">
+                    </div>
+                </div>
+
+                <div class="card">
+                    <a href="details.html" class="header">
+                        <img src="assets/images/Books/Book2.jpg" alt="" srcset="">
+                    </a>
+                    <a href="details.html" class="body">
+                        <h1><img src="assets/images/bookIcon.png" alt="">كتاب إلكتروني</h1>
+                        <div class="rating">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                        </div>
+                        <p class="BoookTitle">خلف قوتي ضعف يحبك (كتاب إلكتروني)</p>
+                        <h2>24.99 <sub>رس</sub></h2>
+                        <span>صيغ أخرى:</span>
+                        <a href="#">كتاب مطبوع</a>
+                    </a>
+                    <div class="footer">
+                        <img src="assets/icons/svgexport-55.svg" alt="transfere" srcset="">
+                        <img class="origin" src="assets/icons/cart-2.svg" alt="shopbag" srcset="">
+                        <img src="assets/icons/svgexport-54.svg" alt="star" srcset="">
+                    </div>
+                </div>
+
+                <div class="card">
+                    <a href="details.html" class="header">
+                        <img src="assets/images/Books/Book3.jpg" alt="" srcset="">
+                    </a>
+                    <a href="details.html" class="body">
+                        <h1><img src="assets/images/bookIcon.png" alt="">كتاب إلكتروني</h1>
+                        <div class="rating">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                        </div>
+                        <p class="BoookTitle">كتالوج الحب (كتاب إلكتروني)</p>
+                        <h2>19.99 <sub>رس</sub></h2>
+                        <span>صيغ أخرى:</span>
+                        <a href="#">كتاب مطبوع</a>
+                    </a>
+                    <div class="footer">
+                        <img src="assets/icons/svgexport-55.svg" alt="transfere" srcset="">
+                        <img class="origin" src="assets/icons/cart-2.svg" alt="shopbag" srcset="">
+                        <img src="assets/icons/svgexport-54.svg" alt="star" srcset="">
+                    </div>
+                </div>
+
+                <div class="card">
+                    <a href="details.html" class="header">
+                        <img src="assets/images/Books/Book4.jpg" alt="" srcset="">
+                    </a>
+                    <a href="details.html" class="body">
+                        <h1><img src="assets/images/bookIcon.png" alt="">كتاب إلكتروني</h1>
+                        <div class="rating">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                        </div>
+                        <p class="BoookTitle">إلى الذي أسرني حبه (كتاب إلكتروني)</p>
+                        <h2>19.99 <sub>رس</sub></h2>
+                        <span>صيغ أخرى:</span>
+                        <a href="#">كتاب مطبوع</a>
+                    </a>
+                    <div class="footer">
+                        <img src="assets/icons/svgexport-55.svg" alt="transfere" srcset="">
+                        <img class="origin" src="assets/icons/cart-2.svg" alt="shopbag" srcset="">
+                        <img src="assets/icons/svgexport-54.svg" alt="star" srcset="">
+                    </div>
+                </div>
+
+                <div class="card">
+                    <a href="details.html" class="header">
+                        <img src="assets/images/Books/Book5.jpg" alt="" srcset="">
+                    </a>
+                    <a href="details.html" class="body">
+                        <h1><img src="assets/images/bookIcon.png" alt=""> كتاب إلكتروني</h1>
+                        <div class="rating">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                        </div>
+                        <p class="BoookTitle">زواج غير متوقع (كتاب إلكتروني)</p>
+                        <h2>3.99 <sub>رس</sub></h2>
+                        <span>صيغ أخرى:</span>
+                        <a href="#">كتاب مطبوع</a>
+                    </a>
+                    <div class="footer">
+                        <img src="assets/icons/svgexport-55.svg" alt="transfere" srcset="">
+                        <img class="origin" src="assets/icons/cart-2.svg" alt="shopbag" srcset="">
+                        <img src="assets/icons/svgexport-54.svg" alt="star" srcset="">
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div id="sec4" class="oneLineDiv">
+                <h1> الطبخ</h1>
+                <a href="category.html">عرض الكل</a>
+            </div>
+            <div class="container slider">
+                <div class="card">
+                    <a href="details.html" class="header">
+                        <img src="assets/images/Books/Book1.jpg" alt="" srcset="">
+                    </a>
+                    <a href="details.html" class="body">
+                        <h1><img src="assets/images/bookIcon.png" alt="">كتاب إلكتروني</h1>
+                        <div class="rating">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                        </div>
+                        <p class="BoookTitle">كبرياء وهوى (كتاب إلكتروني)</p>
+                        <h2>17.99 <sub>رس</sub></h2>
+                        <span>صيغ أخرى:</span>
+                        <a href="#">كتاب مطبوع</a>
+                    </a>
+                    <div class="footer">
+                        <img src="assets/icons/svgexport-55.svg" alt="transfere" srcset="">
+                        <img class="origin" src="assets/icons/cart-2.svg" alt="shopbag" srcset="">
+                        <img src="assets/icons/svgexport-54.svg" alt="star" srcset="">
+                    </div>
+                </div>
+
+                <div class="card">
+                    <a href="details.html" class="header">
+                        <img src="assets/images/Books/Book2.jpg" alt="" srcset="">
+                    </a>
+                    <a href="details.html" class="body">
+                        <h1><img src="assets/images/bookIcon.png" alt="">كتاب إلكتروني</h1>
+                        <div class="rating">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                        </div>
+                        <p class="BoookTitle">خلف قوتي ضعف يحبك (كتاب إلكتروني)</p>
+                        <h2>24.99 <sub>رس</sub></h2>
+                        <span>صيغ أخرى:</span>
+                        <a href="#">كتاب مطبوع</a>
+                    </a>
+                    <div class="footer">
+                        <img src="assets/icons/svgexport-55.svg" alt="transfere" srcset="">
+                        <img class="origin" src="assets/icons/cart-2.svg" alt="shopbag" srcset="">
+                        <img src="assets/icons/svgexport-54.svg" alt="star" srcset="">
+                    </div>
+                </div>
+
+                <div class="card">
+                    <a href="details.html" class="header">
+                        <img src="assets/images/Books/Book3.jpg" alt="" srcset="">
+                    </a>
+                    <a href="details.html" class="body">
+                        <h1><img src="assets/images/bookIcon.png" alt="">كتاب إلكتروني</h1>
+                        <div class="rating">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                        </div>
+                        <p class="BoookTitle">كتالوج الحب (كتاب إلكتروني)</p>
+                        <h2>19.99 <sub>رس</sub></h2>
+                        <span>صيغ أخرى:</span>
+                        <a href="#">كتاب مطبوع</a>
+                    </a>
+                    <div class="footer">
+                        <img src="assets/icons/svgexport-55.svg" alt="transfere" srcset="">
+                        <img class="origin" src="assets/icons/cart-2.svg" alt="shopbag" srcset="">
+                        <img src="assets/icons/svgexport-54.svg" alt="star" srcset="">
+                    </div>
+                </div>
+
+                <div class="card">
+                    <a href="details.html" class="header">
+                        <img src="assets/images/Books/Book4.jpg" alt="" srcset="">
+                    </a>
+                    <a href="details.html" class="body">
+                        <h1><img src="assets/images/bookIcon.png" alt="">كتاب إلكتروني</h1>
+                        <div class="rating">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                        </div>
+                        <p class="BoookTitle">إلى الذي أسرني حبه (كتاب إلكتروني)</p>
+                        <h2>19.99 <sub>رس</sub></h2>
+                        <span>صيغ أخرى:</span>
+                        <a href="#">كتاب مطبوع</a>
+                    </a>
+                    <div class="footer">
+                        <img src="assets/icons/svgexport-55.svg" alt="transfere" srcset="">
+                        <img class="origin" src="assets/icons/cart-2.svg" alt="shopbag" srcset="">
+                        <img src="assets/icons/svgexport-54.svg" alt="star" srcset="">
+                    </div>
+                </div>
+
+                <div class="card">
+                    <a href="details.html" class="header">
+                        <img src="assets/images/Books/Book5.jpg" alt="" srcset="">
+                    </a>
+                    <a href="details.html" class="body">
+                        <h1><img src="assets/images/bookIcon.png" alt=""> كتاب إلكتروني</h1>
+                        <div class="rating">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                        </div>
+                        <p class="BoookTitle">زواج غير متوقع (كتاب إلكتروني)</p>
+                        <h2>3.99 <sub>رس</sub></h2>
+                        <span>صيغ أخرى:</span>
+                        <a href="#">كتاب مطبوع</a>
+                    </a>
+                    <div class="footer">
+                        <img src="assets/icons/svgexport-55.svg" alt="transfere" srcset="">
+                        <img class="origin" src="assets/icons/cart-2.svg" alt="shopbag" srcset="">
+                        <img src="assets/icons/svgexport-54.svg" alt="star" srcset="">
+                    </div>
+                </div>
+            </div>
+
+
+            <div id="sec5" class="oneLineDiv">
+                <h1> أفضل الروايات الرومانسية</h1>
+                <a href="category.html">عرض الكل</a>
+            </div>
+            <div class="container slider">
+                <div class="card">
+                    <a href="details.html" class="header">
+                        <img src="assets/images/Books/Book1.jpg" alt="" srcset="">
+                    </a>
+                    <a href="details.html" class="body">
+                        <h1><img src="assets/images/bookIcon.png" alt="">كتاب إلكتروني</h1>
+                        <div class="rating">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                        </div>
+                        <p class="BoookTitle">كبرياء وهوى (كتاب إلكتروني)</p>
+                        <h2>17.99 <sub>رس</sub></h2>
+                        <span>صيغ أخرى:</span>
+                        <a href="#">كتاب مطبوع</a>
+                    </a>
+                    <div class="footer">
+                        <img src="assets/icons/svgexport-55.svg" alt="transfere" srcset="">
+                        <img class="origin" src="assets/icons/cart-2.svg" alt="shopbag" srcset="">
+                        <img src="assets/icons/svgexport-54.svg" alt="star" srcset="">
+                    </div>
+                </div>
+
+                <div class="card">
+                    <a href="details.html" class="header">
+                        <img src="assets/images/Books/Book2.jpg" alt="" srcset="">
+                    </a>
+                    <a href="details.html" class="body">
+                        <h1><img src="assets/images/bookIcon.png" alt="">كتاب إلكتروني</h1>
+                        <div class="rating">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                        </div>
+                        <p class="BoookTitle">خلف قوتي ضعف يحبك (كتاب إلكتروني)</p>
+                        <h2>24.99 <sub>رس</sub></h2>
+                        <span>صيغ أخرى:</span>
+                        <a href="#">كتاب مطبوع</a>
+                    </a>
+                    <div class="footer">
+                        <img src="assets/icons/svgexport-55.svg" alt="transfere" srcset="">
+                        <img class="origin" src="assets/icons/cart-2.svg" alt="shopbag" srcset="">
+                        <img src="assets/icons/svgexport-54.svg" alt="star" srcset="">
+                    </div>
+                </div>
+
+                <div class="card">
+                    <a href="details.html" class="header">
+                        <img src="assets/images/Books/Book3.jpg" alt="" srcset="">
+                    </a>
+                    <a href="details.html" class="body">
+                        <h1><img src="assets/images/bookIcon.png" alt="">كتاب إلكتروني</h1>
+                        <div class="rating">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                        </div>
+                        <p class="BoookTitle">كتالوج الحب (كتاب إلكتروني)</p>
+                        <h2>19.99 <sub>رس</sub></h2>
+                        <span>صيغ أخرى:</span>
+                        <a href="#">كتاب مطبوع</a>
+                    </a>
+                    <div class="footer">
+                        <img src="assets/icons/svgexport-55.svg" alt="transfere" srcset="">
+                        <img class="origin" src="assets/icons/cart-2.svg" alt="shopbag" srcset="">
+                        <img src="assets/icons/svgexport-54.svg" alt="star" srcset="">
+                    </div>
+                </div>
+
+                <div class="card">
+                    <a href="details.html" class="header">
+                        <img src="assets/images/Books/Book4.jpg" alt="" srcset="">
+                    </a>
+                    <a href="details.html" class="body">
+                        <h1><img src="assets/images/bookIcon.png" alt="">كتاب إلكتروني</h1>
+                        <div class="rating">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                        </div>
+                        <p class="BoookTitle">إلى الذي أسرني حبه (كتاب إلكتروني)</p>
+                        <h2>19.99 <sub>رس</sub></h2>
+                        <span>صيغ أخرى:</span>
+                        <a href="#">كتاب مطبوع</a>
+                    </a>
+                    <div class="footer">
+                        <img src="assets/icons/svgexport-55.svg" alt="transfere" srcset="">
+                        <img class="origin" src="assets/icons/cart-2.svg" alt="shopbag" srcset="">
+                        <img src="assets/icons/svgexport-54.svg" alt="star" srcset="">
+                    </div>
+                </div>
+
+                <div class="card">
+                    <a href="details.html" class="header">
+                        <img src="assets/images/Books/Book5.jpg" alt="" srcset="">
+                    </a>
+                    <a href="details.html" class="body">
+                        <h1><img src="assets/images/bookIcon.png" alt=""> كتاب إلكتروني</h1>
+                        <div class="rating">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                            <img src="assets/icons/rating.svg" class="rating__star" alt="">
+                        </div>
+                        <p class="BoookTitle">زواج غير متوقع (كتاب إلكتروني)</p>
+                        <h2>3.99 <sub>رس</sub></h2>
+                        <span>صيغ أخرى:</span>
+                        <a href="#">كتاب مطبوع</a>
+                    </a>
+                    <div class="footer">
+                        <img src="assets/icons/svgexport-55.svg" alt="transfere" srcset="">
+                        <img class="origin" src="assets/icons/cart-2.svg" alt="shopbag" srcset="">
+                        <img src="assets/icons/svgexport-54.svg" alt="star" srcset="">
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </section>
+    <!-- End Body Section  -->
+
+
+
+    <!-- Start Footer  -->
+    <footer>
+        <div class="first">
+            <div class="contact">
+                <div>
+                    <h1>انظم إلى نشرتنا البريدية</h1>
+                    <form action="">
+                        <input type="email" name="email" placeholder="ادخل بريدك الإلكتروني" id="">
+                        <input type="submit" value="اشتراك">
+                    </form>
+                </div>
+
+                <div class="contactLinks">
+                    <h1>تواصل معنا</h1>
+                    <div>
+                        <img src="assets/icons/svgexport-58.svg" alt="">
+                        <img src="assets/icons/svgexport-59.svg" alt="">
+                        <img src="assets/icons/svgexport-60.svg" alt="">
+                        <img src="assets/icons/svgexport-61.svg" alt="">
+                        <img src="assets/icons/svgexport-62.svg" alt="">
+                        <img src="assets/icons/svgexport-63.svg" alt="">
+                        <img src="assets/icons/svgexport-64.svg" alt="">
+
+                    </div>
+                </div>
+
+
+            </div>
+            <div>
+                <h1>خدمة العملاء</h1>
+                <hr>
+                <ul>
+                    <li><a href="#">مبيغات الشركة</a></li>
+                    <li><a href="#">الأسئلة المتكررة</a></li>
+                    <li><a href="#">دليل التسوق والمطبوعات</a></li>
+                    <li><a href="#">مواقع المعارض</a></li>
+                    <li><a href="#">سياسة الضمان</a></li>
+                    <li><a href="#">سياسة الإسترجاع والإستبدال</a></li>
+                    <li><a href="#">أتصل بنا</a></li>
+                    <li>92000000089</li>
+                </ul>
+            </div>
+            <div>
+                <h1>خدمات جرير</h1>
+                <hr>
+                <ul>
+                    <li><a href="#">مبيغات الشركة</a></li>
+                    <li><a href="#">الأسئلة المتكررة</a></li>
+                    <li><a href="#">دليل التسوق والمطبوعات</a></li>
+                    <li><a href="#">مواقع المعارض</a></li>
+                    <li><a href="#">سياسة الضمان</a></li>
+                    <li><a href="#">سياسة الإسترجاع والإستبدال</a></li>
+                    <li><a href="#">أتصل بنا</a></li>
+                    <li>92000000089</li>
+                </ul>
+            </div>
+
+            <div>
+                <h1>روابط سريعة</h1>
+                <hr>
+                <ul>
+                    <li><a href="#">مبيغات الشركة</a></li>
+                    <li><a href="#">الأسئلة المتكررة</a></li>
+                    <li><a href="#">دليل التسوق والمطبوعات</a></li>
+                    <li><a href="#">مواقع المعارض</a></li>
+                    <li><a href="#">سياسة الضمان</a></li>
+                    <li><a href="#">سياسة الإسترجاع والإستبدال</a></li>
+                    <li><a href="#">أتصل بنا</a></li>
+                    <li>92000000089</li>
+                </ul>
+            </div>
+
+            <div>
+                <h1>عن جرير</h1>
+                <hr>
+                <ul>
+                    <li><a href="#">مبيغات الشركة</a></li>
+                    <li><a href="#">الأسئلة المتكررة</a></li>
+                    <li><a href="#">دليل التسوق والمطبوعات</a></li>
+                    <li><a href="#">مواقع المعارض</a></li>
+                    <li><a href="#">سياسة الضمان</a></li>
+                    <li><a href="#">سياسة الإسترجاع والإستبدال</a></li>
+                    <li><a href="#">أتصل بنا</a></li>
+                    <li>92000000089</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="second">
+            <div style="order: 2;">
+                <h4>سياسة الخصوصية | شروط الخدمة</h4>
+                <p>
+                    جميع الحقوق محفوظة لمكتبة جرير &copy; 2015 س.ت 1010032264 اونلاين س.ت 1010654231
+                </p>
+            </div>
+            <div style="order: 1;">
+                <img src="assets/icons/svgexport-65.svg" alt="">
+                <img src="assets/icons/svgexport-66.svg" alt="">
+                <img src="assets/icons/svgexport-67.svg" alt="">
+                <img src="assets/icons/svgexport-68.svg" alt="">
+                <img src="assets/icons/svgexport-69.svg" alt="">
+                <img src="assets/icons/svgexport-70.svg" alt="">
+
+            </div>
+        </div>
+
+    </footer>
+
+    <!-- End Footer  -->
+
+    <!-- Start Login Pop Up -->
+    <div id="sign-in">
+        <span onclick="hideModule('sign-in');" class="close" title="Close Modal">×</span>
+        <form action="">
+            <h1>تسجيــــل الدخـــول</h1>
+            <hr>
+            <input class="" type="text" onkeyup="validateName(this);" id="fullName" name="fullName" placeholder="البريد الإلكتروني أو رقم الجوال">
+
+            <div class="passDiv">
+                <a href="#">نسيت ؟</a>
+                <input class="input" type="password" onkeyup="validatePassword(this);" id="password" name="password" placeholder="كلمة السر">
+            </div>
+            <input class="input" id="submit" type="submit" value="تسجيل الدخـــول">
+
+            <div id="CreateAccountBox">
+                <label for="createAccountBtn">ليس لديك حساب ؟</label>
+                <a id="createAccountBtn" onclick="hideModule('sign-in'); showModule('sign-up');" href="#">إنشاء حساب جديد</a>
+            </div>
+
+        </form>
+    </div>
+    <!-- Finish Login Pop Up -->
+
+    <!-- Starting Sign-up Pop Up -->
+
+    <div id="sign-up">
+        <span onclick="hideModule('sign-up');" class="close" title="Close Modal">×</span>
+        <form action="">
+            <h1>إنشاء حساب</h1>
+            <hr>
+            <div id="OTP">
+                <input class="input1" type="tel" onkeyup="validateName(this);" id="phone" name="phone" placeholder="رقم الجوال">
+                <div class="input2" style="position: relative;">
+                    <label for="">رمز الدولة</label>
+                    <select name="" id="">
+                        <option value="yemen">+967 👍</option>
+                        <option value="yemen">+967 👍</option>
+                        <option value="yemen">+967 👍</option>
+                        <option value="yemen">+967 👍</option>
+                        <option value="yemen">+967 👍</option>
+                        <option value="yemen">+967 👍</option>
+                        <option value="yemen">+967 👍</option>
+                    </select>
+                </div>
+                <p>سوف نرسل لك <b>رمز التحقق عن طريق رسالة نصية</b></p>
+                <input class="input" type="submit" value="ارسال رمز التحقق">
+            </div>
+
+
+            <input class="" type="text" id="fname" name="fname" placeholder="الاسم الأول">
+            <input class="" type="text" id="lname" name="lname" placeholder="اسم العائلة">
+            <input class="" type="email" id="email" name="email" placeholder="اليريد الالكتروني">
+            <input class="" type="email" id="re-email" name="re-email" placeholder="تأكيد البريد الألكتروني">
+            <input class="" type="password" id="password" name="password" placeholder="كلمة السر">
+            <div class="checkbox">
+                <input type="checkbox" name="" id="">
+                <label for="">اوافق على <b>الشروط والأحكام</b></label>
+            </div>
+
+            <div class="checkbox">
+                <input type="checkbox" name="" id="">
+                <label for="">التسجل للإنظمام للنشرة البريدية</label>
+            </div>
+            <input class="input" id="submit" type="submit" value="إنشاء حساب">
+
+            <div id="LoginBox">
+                <label for="loginBtn"> لديك حساب ؟</label>
+                <a id="loginBtn" onclick="hideModule('sign-up'); showModule('sign-in');" href="#">تسجيل الدخـــول <</a>
+            </div>
+
+        </form>
+    </div>
+
+    <!-- Finish Sign-up Pop Up -->
+
+    <script src="assets/js/app.js"></script>
+</body>
+
+</html>

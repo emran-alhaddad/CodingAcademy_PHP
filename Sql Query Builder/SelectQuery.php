@@ -36,7 +36,7 @@ class SelectQuery
         $this->innerJoin = [];
         $this->leftJoin = [];
         $this->rightJoin = [];
-        $this->logic = " OR ";
+        $this->logic = " AND ";
         $this->sortType = ORDERBY::ASC;
     }
 

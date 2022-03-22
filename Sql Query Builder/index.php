@@ -28,22 +28,21 @@
         require_once('QueryBulider.php');
 
 
-        //         SELECT
-        // 	`article`.`article_id`,
-        //     `article`.`article_title`,
-        //     `article`.`article_created_time`,
-        //     `category`.`category_name`,
-        //     `author`.`author_fullname`
-        // FROM
-        //     `article`
-        // LEFT JOIN `author` ON `author`.`author_id` = `article`.`id_author`
-        // LEFT JOIN `category` ON `category`.`category_id` = `article`.`id_categorie`
 
+        $query = new QueryBuilder("blog");
 
-        $query = new QueryBuilder();
+        // $result = $query
+        // ->where()
+        // ->select("id","username","password","email")
+        // ->from("user")
+        // ->execute();
+
         $result = $query
             ->from("article")
             ->innerJoin("author", on: "author.author_id = article.id_author")
+            ->where('article.article_id>5')
+            ->or()
+            ->where('article.article_id<100')
             ->leftJoin("category", on: "category.category_id = article.id_categorie")
             ->distinct()
             ->select("article.article_id", "article.article_title", "category.category_name", "author.author_fullname")
@@ -53,13 +52,36 @@
             ->orderBy("article.id_categorie")
             ->execute();
 
+        // $query = new QueryBuilder();
+        // $result = $query
+        // ->fields('username','password','email')
+        // ->insertInto('user')
+        // ->values("'EmranCo'","'EmranCo'","'alhaddademran@gmail.com'")
+        // ->or()
+        // ->execute();
+
+        // $query = new QueryBuilder();
+        // $result = $query
+        // ->update('user')
+        // ->set('username',"'EmranCo'")
+        // ->set('password',"'EmranCo'")
+        // ->where('id=2')
+        // ->execute();
+
+        // $query = new QueryBuilder();
+        // $result = $query
+        // ->where('id=2')
+        // ->delete('user')
+        // ->and()
+        // ->insertInto('user')
+        // ->execute();
+
         ?>
 
         <p class="text-justify m-5 fs-3 p-3  rounded text-light bg-success" style="word-spacing: 5px;">
             Simple Query Builder: By Emran Al-Haddad
         </p>
         <p class="query text-justify m-5 fs-3 p-3  rounded" style="word-spacing: 5px;">
-        <?= hash('sha256','EmranCo'); ?>
             <?= $query->styledQuery; ?>
         </p>
 

@@ -1,7 +1,6 @@
 <?php
 
-require_once('../Controller/DataAccessLayer/DBController.php');
-DBController::connectDB();
+require_once('../Models/DataAccessLayer/DBController.php');
 
  final class TableController{
 
@@ -15,6 +14,7 @@ DBController::connectDB();
 
     static function getTableFields($table,$fields,$condition="1")
     {
+        $fields = implode(", ",$fields);
         $query = "SELECT $fields FROM $table WHERE $condition";
         $result = DBController::executeQuery($query);
         return $result;
@@ -23,17 +23,8 @@ DBController::connectDB();
 
     static function insertInto($table, $params)
     {
-        $keys = "";
-        $values = "";
-        foreach ($params as $key => $value) {
-            $keys .= $key . ' ,';
-            $values .= $value . ' ,';
-        }
-
-        // delete the last , from text that cause syntax error
-        $keys = substr_replace($keys ,"",-1); 
-        $values = substr_replace($values ,"",-1);
-
+        $keys = implode(", ",array_keys($params));
+        $values = implode(", ",array_values($params));
         $query = "INSERT INTO $table ($keys) VALUES ($values)";
         return DBController::executeNonQuery($query);    
     }

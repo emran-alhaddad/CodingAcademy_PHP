@@ -23,20 +23,30 @@
       <div class="mb-3">
         <label for="exampleInputname" class="form-label"> Name:</label>
         <input name="name" value="<?= empty($data['form_values']['name'])?"":$data['form_values']['name'] ?> " type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-
+        <div class="form-text text-danger">
+        <?= empty($data['Errors']['nameErr'])?"":$data['Errors']['nameErr'] ?>
+        </div>
       </div>
       <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Email address</label>
         <input name="email" type="email" value="<?= empty($data['form_values']['email'])?"":$data['form_values']['email'] ?> " class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        <div class="form-text text-danger">
+        <?= empty($data['Errors']['emailErr'])?"":$data['Errors']['emailErr'] ?>
+        </div>
       </div>
       <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" name="password">
+        <input type="password" value="<?= empty($data['form_values']['password'])?"":$data['form_values']['password'] ?> "  class="form-control" id="exampleInputPassword1" name="password">
+        <div class="form-text text-danger">
+        <?= empty($data['Errors']['passErr'])?"":$data['Errors']['passErr'] ?>
+        </div>
       </div>
       <div class="mb-3">
         <label for="exampleInputPassword2" class="form-label">Retype Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword2" name="retype_password">
+        <input type="password" value="<?= empty($data['form_values']['repass'])?"":$data['form_values']['repass'] ?> "  class="form-control" id="exampleInputPassword2" name="retype_password">
+        <div class="form-text text-danger">
+        <?= empty($data['Errors']['rePassErr'])?"":$data['Errors']['rePassErr'] ?>
+        </div>
       </div>
       <div class="mb-3 form-check">
         <input type="checkbox" class="form-check-input" id="exampleCheck1">

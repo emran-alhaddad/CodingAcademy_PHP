@@ -35,13 +35,20 @@ class Users extends Controller
             $email = $_POST['email'];
             $reTypePassword = $_POST['retype_password'];
 
-            if (Validation::validateUser($_POST)) {
+            $data = array(
+                'name' => ["data"=>$userName, "required"=> true],
+                'password' => ["data"=>md5($password), "required"=> true , "min"=>5 , "max"=>15],
+                'email' => ["data"=>$email, "required"=> true],
+                'repass' => ["data"=>$reTypePassword, "required"=> true],
+            );
+
+            if (Validation::validateUser($data)) {
 
                 if ($userName != "" && $password != "" && $email != "") {
                     $user_data = array(
                         'name' => $userName,
                         'password' => md5($password),
-                        'email' => $email,
+                        'email' =>$email,
                         'repass' => $reTypePassword,
                     );
                     $u = $this->model('user');

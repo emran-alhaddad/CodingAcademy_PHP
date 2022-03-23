@@ -10,39 +10,48 @@ class Validation
 
     public static function validateUserName($username)
     {
-        if (empty($username)) return "Required Field";
-        if (!preg_match("/^[a-zA-Z-' ]*$/", $username)) return "Only letters and white space allowed";
+        if (empty($username['data'])) return "required Field";
+        if (!preg_match("/^[a-zA-Z-' ]*$/", $username['data'])) return "Only letters and white space allowed";
         return "";
     }
 
     public static function validateEmail($email)
     {
-        if (empty($email)) return "Required Field";
+        if (empty($email['data'])) return "required Field";
         if (!preg_match(
             "/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/i",
-            $email
+            $email['data']
         )) return "Invalid Email";
         return "";
     }
 
-    public static function validatePassword($password, $min = 3, $max = 30)
+    public static function validatePassword($password)
     {
-        if (empty($password)) return "Required Field";
-        if (!((strlen($password) >= $min) && (strlen($password) <= $max))) return "Invalid Password Length";
+        if (empty($password['data'])) return "required Field";
+        if (!((strlen($password['data']) >= $password['min']) && 
+        (strlen($password['data']) <= $password['max']))) return "Invalid Password Length";
         return "";
     }
 
     public static function validateRePassword($password, $rePassword)
     {
-        if ($password !== $rePassword) return "Passwords not match!";
+        if ($password['data'] !== $rePassword['data']) return "Passwords not match!";
         return "";
     }
 
     public static function validateUser($user)
     {
+
+        if($user['name']['required'])
         self::$userNameError = self::validateUserName($user['name']);
+        
+        if($user['password']['required'])
         self::$passwordError = self::validatePassword($user['password']);
-        self::$rePasswordError = self::validateRePassword($user['password'],$user['retype_password']);
+        
+        if($user['repass']['required'])
+        self::$rePasswordError = self::validateRePassword($user['password'],$user['repass']);
+        
+        if($user['email']['required'])
         self::$emailError = self::validateEmail($user['email']);
 
         if (

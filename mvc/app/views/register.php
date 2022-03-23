@@ -36,14 +36,14 @@
       </div>
       <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">Password</label>
-        <input type="password" value="<?= empty($data['form_values']['password'])?"":$data['form_values']['password'] ?> "  class="form-control" id="exampleInputPassword1" name="password">
+        <input type="password" value="<?=empty($data['form_values']['password'])?null:$data['form_values']['password'] ?> "  class="form-control" id="exampleInputPassword1" name="password">
         <div class="form-text text-danger">
         <?= empty($data['Errors']['passErr'])?"":$data['Errors']['passErr'] ?>
         </div>
       </div>
       <div class="mb-3">
         <label for="exampleInputPassword2" class="form-label">Retype Password</label>
-        <input type="password" value="<?= empty($data['form_values']['repass'])?"":$data['form_values']['repass'] ?> "  class="form-control" id="exampleInputPassword2" name="retype_password">
+        <input type="password" value="<?= empty($data['form_values']['repass'])?null:$data['form_values']['repass'] ?> "  class="form-control" id="exampleInputPassword2" name="retype_password">
         <div class="form-text text-danger">
         <?= empty($data['Errors']['rePassErr'])?"":$data['Errors']['rePassErr'] ?>
         </div>

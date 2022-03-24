@@ -2,14 +2,9 @@
 
 class Router{
 
-    public function __construct()
+    public static function use($url,$calback)
     {
-        
-    }
-
-    public function use($url,$calback)
-    {
-        $calback($url);
+        $calback($url[0]);
     }
 }
 

@@ -101,10 +101,10 @@ const AddProduct = () => {
         document.getElementById('BagCounter').style.visibility = "visible";
         document.getElementById('BagCounter').innerText = localStorage.length;
         document.getElementById('BagCounter').style.visibility = "visible";
-        document.getElementById('BagImage').src = "assets/icons/BagFull.svg";
+        document.getElementById('BagImage').src = "App/Public/icons/BagFull.svg";
     } else {
         document.getElementById('BagCounter').style.visibility = "hidden";
-        document.getElementById('BagImage').src = "assets/icons/svgexport-51.svg";
+        document.getElementById('BagImage').src = "App/Public/icons/svgexport-51.svg";
     }
 }
 
@@ -179,13 +179,13 @@ const changeLanguage = () => {
 
     if (btn.innerText.toUpperCase().includes("English".toUpperCase())) {
 
-        page.setAttribute("href", "assets/css/englishStyle.css");
-        btn.innerHTML = '<img src="assets/icons/Arabic.svg" alt=""> Arabic';
+        page.setAttribute("href", "App/Public/css/englishStyle.css");
+        btn.innerHTML = '<img src="App/Public/icons/Arabic.svg" alt=""> Arabic';
 
     } else if (btn.innerText.toUpperCase().includes("Arabic".toUpperCase())) {
 
-        page.setAttribute("href", "assets/css/arabicStyle.css");
-        btn.innerHTML = '<img src="assets/icons/English.svg" alt=""> English';
+        page.setAttribute("href", "App/Public/css/arabicStyle.css");
+        btn.innerHTML = '<img src="App/Public/icons/English.svg" alt=""> English';
 
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-class Error extends Exception
+class SystemError extends Exception
 {
 
     public const FILE_NOT_FOUND = 1001;
@@ -9,10 +9,10 @@ class Error extends Exception
     public const INPUT_ERROR = 1004;
     public $msg = "";
 
-    public function __construct($msg)
+    public function __construct($code)
     {
 
-        $this->msg = $msg;
+        $this->msg = $code;
         parent::__wakeup();
     }
 }

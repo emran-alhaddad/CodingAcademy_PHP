@@ -4,7 +4,7 @@ require_once(System::SYSTEM . "Express.php");
 require_once(System::CONTROLLER . "controller.php");
 
 
-class userRoutes
+class SystemRoutes
 {
 
     public static function show($url = "")

@@ -1,22 +1,14 @@
 <?php
-require_once("Express.php");
-require_once("Router.php");
-
+require_once("App/System/System.php");
+require_once(System::SYSTEM."Router.php");
+require_once(System::ROUTS."systemRoutes.php");
 class Server{
 
-    public $express;
-    public $router;
 
     public function __construct()
     {
-        $this->express = new Express();
-        $this->router = new Router();
-
         $url=explode('/',$_GET['url']);
-
-        $this->router->use($url,function($d){
-            print_r($d);
-        });
+        Router::use($url,function($link){SystemRoutes::show($link);});
     }
 
 }

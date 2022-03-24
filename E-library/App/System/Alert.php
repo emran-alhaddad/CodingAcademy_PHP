@@ -1,5 +1,5 @@
 <?php
-
+require_once("App/System/System.php");
 class Alert{
 
     public const SUCCESS = "success";

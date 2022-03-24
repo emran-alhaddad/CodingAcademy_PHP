@@ -1,108 +1,17 @@
 <!DOCTYPE html>
 <html lang="ar">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Details</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/account-style.css">
-    <link rel="stylesheet" href="assets/css/details.css">
-    <link rel="stylesheet" href="assets/css/carousel.css">
-    <link id="pageStyle" rel="stylesheet" href="assets/css/arabicStyle.css">
-</head>
+<?php require_once(System::COMPONENTS."head.php"); ?>
 
 <body>
 
-    <!-- Start Header -->
-    <header>
-        <nav id="menuNav">
-            <ul id="menueList">
-                <li onclick="showModule('sign-in');"> <img src="assets/icons/svgexport-1.svg" alt=""> ادخل حسابك أو سجل الأن </li>
-                <li>
-                    <a href="index.html"><img src="assets/icons/svgexport-54.svg" alt="">الرئيسية</a>
-                </li>
-                <li>
-                    <a href="about.html"><img src="assets/icons/svgexport-3.svg" alt="">من نحن </a>
-                </li>
-                <li>
-                    <a href="contact.html"><img src="assets/icons/svgexport-4.svg" alt="">أتصل بنا </a>
-                </li>
-                <li>
-                    <a href="help.html"><img src="assets/icons/svgexport-5.svg" alt="">المساعدة</a>
-                </li>
-                <li>
-                    <a href="privacy.html"><img src="assets/icons/svgexport-11.svg" alt="">سياسة الخصوصية</a>
-                </li>
-                <li><img src="assets/icons/svgexport-12.svg" alt="">اليمن YER</li>
-                <li onclick="changeLanguage();" id="languageBtn"><img src="assets/icons/English.svg" alt=""> English</li>
-            </ul>
-
-        </nav>
-
-        <img onclick="toggleMenue();" id="menueBtn" src="assets/icons/Menue.svg" alt="">
-
-    </header>
-    <!-- End Header -->
+    <?php require_once(System::COMPONENTS."header.php"); ?>
 
     <!-- Start Body Section -->
     <section class="body">
 
-        <section class="search_logo">
-            <div class="logo">
-                <a href="index.html">
-                    <img src="assets/images/eLibrary_logo_web.jpg" alt="Logo">
-                </a>
-            </div>
-            <form action="" class="searchBox">
-                <input type="text" name="seach" id="search" onkeyup="search_books();">
-                <input type="submit" value="">
-            </form>
-            <div class="bag">
-                <div style="position:relative ;">
-                    <span id="BagCounter"></span>
-                    <a href="shopBag.html">
-                        <img src="assets/icons/svgexport-51.svg" id="BagImage" alt="">
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Start Carosal  -->
-        <section class="carousel hide">
-            <div class="carouselSlider animation">
-                <img src="assets/images/banner1.jpg" alt="">
-            </div>
-            <div class="carouselSlider animation">
-                <img src="assets/images/banner2.jpg" alt="">
-            </div>
-            <div class="carouselSlider animation">
-                <img src="assets/images/banner3.jpg" alt="">
-            </div>
-            <div class="carouselSlider animation">
-                <img src="assets/images/banner4.jpg" alt="">
-            </div>
-
-            <!-- Navigation arrows -->
-            <a class="carouselLeftBtn" onclick="nextPrev(-1)">❯</a>
-            <a class="carouselRightBtn" onclick="nextPrev(1)">❮</a>
-
-            <!-- Navigation Icons -->
-            <div class="carouselIcons">
-                <span class="carouselIcon"></span>
-                <span class="carouselIcon"></span>
-                <span class="carouselIcon"></span>
-                <span class="carouselIcon"></span>
-            </div>
-
-        </section>
-        <!-- End Carosal  -->
+    <?php require_once(System::COMPONENTS."searchLogo.php"); ?>
+    <?php require_once(System::COMPONENTS."carosel.php"); ?>
 
         <menu class="subMenue">
             <ul>
@@ -118,24 +27,24 @@
 
                     <div class="card">
                         <div class="header" style="height: 85%;">
-                            <img id='boxImage' src="assets/images/Books/Book1.jpg" height="100%" onclick="callImage(this);">
+                            <img id='boxImage' src="<?= System::ASSETS?>images/Books/Book1.jpg" height="100%" onclick="callImage(this);">
                         </div>
                         <div class="body">
                             <div class="slider">
                                 <div class="image">
-                                    <img class="slideImage switch__" src="assets/images/Books/Book2.jpg" onclick="switchImage(this,'boxImage');">
+                                    <img class="slideImage switch__" src="<?= System::ASSETS?>images/Books/Book2.jpg" onclick="switchImage(this,'boxImage');">
                                 </div>
                                 <div class="image">
-                                    <img class="slideImage switch__" src="assets/images/Books/Book3.jpg" onclick="switchImage(this,'boxImage');">
+                                    <img class="slideImage switch__" src="<?= System::ASSETS?>images/Books/Book3.jpg" onclick="switchImage(this,'boxImage');">
                                 </div>
                                 <div class="image">
-                                    <img class="slideImage switch__" src="assets/images/Books/Book4.jpg" onclick="switchImage(this,'boxImage');">
+                                    <img class="slideImage switch__" src="<?= System::ASSETS?>images/Books/Book4.jpg" onclick="switchImage(this,'boxImage');">
                                 </div>
                                 <div class="image">
-                                    <img class="slideImage switch__" src="assets/images/Books/Book5.jpg" onclick="switchImage(this,'boxImage');">
+                                    <img class="slideImage switch__" src="<?= System::ASSETS?>images/Books/Book5.jpg" onclick="switchImage(this,'boxImage');">
                                 </div>
                                 <div class="image">
-                                    <img class="slideImage switch__" src="assets/images/Books/Book1.jpg" onclick="switchImage(this,'boxImage');">
+                                    <img class="slideImage switch__" src="<?= System::ASSETS?>images/Books/Book1.jpg" onclick="switchImage(this,'boxImage');">
                                 </div>
                             </div>
                         </div>
@@ -176,7 +85,7 @@
                                 <div class="oneLineDiv">
                                     <input type="radio" checked name="book" id="">
                                     <label for="">كتاب إلكتروني</label>
-                                    <img src="assets/icons/Question.png" alt="">
+                                    <img src="<?= System::ASSETS?>icons/Question.png" alt="">
                                 </div>
                                 <div class="price">
                                     <h1> 12.99
@@ -190,7 +99,7 @@
                                 <div class="oneLineDiv">
                                     <input type="radio" name="book" id="">
                                     <label for="">كتاب مطبوع</label>
-                                    <img src="assets/icons/Question.png" alt="">
+                                    <img src="<?= System::ASSETS?>icons/Question.png" alt="">
                                 </div>
                                 <div class="price">
                                     <h1> 17.25
@@ -226,22 +135,22 @@
                                 <div class="all-Market-Tags">
                                     <div class="row">
                                         <span class="marketTags">
-                                        <img src="assets/icons/Market.png" alt="">
+                                        <img src="<?= System::ASSETS?>icons/Market.png" alt="">
                                         تسوق أمن
-                                        <img src="assets/icons/Question.png" alt="">
+                                        <img src="<?= System::ASSETS?>icons/Question.png" alt="">
                                     </span>
                                         <span class="marketTags">
-                                        <img src="assets/icons/safe.png" alt="">
+                                        <img src="<?= System::ASSETS?>icons/safe.png" alt="">
                                         أصلي ومضمون
-                                        <img src="assets/icons/Question.png" alt="">
+                                        <img src="<?= System::ASSETS?>icons/Question.png" alt="">
                                     </span>
                                     </div>
 
                                     <div class="row">
                                         <span class="marketTags">
-                                        <img src="assets/icons/Delivery.png" alt="">
+                                        <img src="<?= System::ASSETS?>icons/Delivery.png" alt="">
                                         شحن سريع ومجاني
-                                        <img src="assets/icons/Question.png" alt="">
+                                        <img src="<?= System::ASSETS?>icons/Question.png" alt="">
                                     </span>
                                     </div>
                                 </div>
@@ -250,15 +159,15 @@
                             <div class="footer">
                                 <div class="row">
                                     <button>
-                                        <img src="assets/icons/Share.png" alt="">
+                                        <img src="<?= System::ASSETS?>icons/Share.png" alt="">
                                         مشاركة
                                     </button>
                                     <button>
-                                        <img src="assets/icons/Heart.png" alt="">
+                                        <img src="<?= System::ASSETS?>icons/Heart.png" alt="">
                                         المفضلة
                                     </button>
                                     <button>
-                                        <img src="assets/icons/Transfere.png" alt="">
+                                        <img src="<?= System::ASSETS?>icons/Transfere.png" alt="">
                                         مقارنة
                                     </button>
 
@@ -272,15 +181,15 @@
                             <div class="footer">
                                 <div class="row">
                                     <button>
-                                        <img src="assets/icons/Share.png" alt="">
+                                        <img src="<?= System::ASSETS?>icons/Share.png" alt="">
                                         مشاركة
                                     </button>
                                     <button>
-                                        <img src="assets/icons/Heart.png" alt="">
+                                        <img src="<?= System::ASSETS?>icons/Heart.png" alt="">
                                         المفضلة
                                     </button>
                                     <button>
-                                        <img src="assets/icons/Transfere.png" alt="">
+                                        <img src="<?= System::ASSETS?>icons/Transfere.png" alt="">
                                         مقارنة
                                     </button>
 
@@ -418,7 +327,7 @@
                 <div class="container">
                     <div class="card card2">
                         <div class="header">
-                            <img src="assets/images/Books/Book1.jpg" width="100" alt="" srcset="">
+                            <img src="<?= System::ASSETS?>images/Books/Book1.jpg" width="100" alt="" srcset="">
                         </div>
                         <div class="body">
                             <h1>كبرياء وهوى</h1>
@@ -430,7 +339,7 @@
                     </div>
                     <div class="card card2">
                         <div class="header">
-                            <img src="assets/images/Books/Book1.jpg" width="100" alt="" srcset="">
+                            <img src="<?= System::ASSETS?>images/Books/Book1.jpg" width="100" alt="" srcset="">
                         </div>
                         <div class="body">
                             <h1>كبرياء وهوى</h1>
@@ -442,7 +351,7 @@
                     </div>
                     <div class="card card2">
                         <div class="header">
-                            <img src="assets/images/Books/Book1.jpg" width="100" alt="" srcset="">
+                            <img src="<?= System::ASSETS?>images/Books/Book1.jpg" width="100" alt="" srcset="">
                         </div>
                         <div class="body">
                             <h1>كبرياء وهوى</h1>
@@ -454,7 +363,7 @@
                     </div>
                     <div class="card card2">
                         <div class="header">
-                            <img src="assets/images/Books/Book1.jpg" width="100" alt="" srcset="">
+                            <img src="<?= System::ASSETS?>images/Books/Book1.jpg" width="100" alt="" srcset="">
                         </div>
                         <div class="body">
                             <h1>كبرياء وهوى</h1>
@@ -466,7 +375,7 @@
                     </div>
                     <div class="card card2">
                         <div class="header">
-                            <img src="assets/images/Books/Book1.jpg" width="100" alt="" srcset="">
+                            <img src="<?= System::ASSETS?>images/Books/Book1.jpg" width="100" alt="" srcset="">
                         </div>
                         <div class="body">
                             <h1>كبرياء وهوى</h1>
@@ -478,7 +387,7 @@
                     </div>
                     <div class="card card2">
                         <div class="header">
-                            <img src="assets/images/Books/Book1.jpg" width="100" alt="" srcset="">
+                            <img src="<?= System::ASSETS?>images/Books/Book1.jpg" width="100" alt="" srcset="">
                         </div>
                         <div class="body">
                             <h1>كبرياء وهوى</h1>
@@ -516,13 +425,13 @@
                 <div class="contactLinks">
                     <h1>تواصل معنا</h1>
                     <div>
-                        <img src="assets/icons/svgexport-58.svg" alt="">
-                        <img src="assets/icons/svgexport-59.svg" alt="">
-                        <img src="assets/icons/svgexport-60.svg" alt="">
-                        <img src="assets/icons/svgexport-61.svg" alt="">
-                        <img src="assets/icons/svgexport-62.svg" alt="">
-                        <img src="assets/icons/svgexport-63.svg" alt="">
-                        <img src="assets/icons/svgexport-64.svg" alt="">
+                        <img src="<?= System::ASSETS?>icons/svgexport-58.svg" alt="">
+                        <img src="<?= System::ASSETS?>icons/svgexport-59.svg" alt="">
+                        <img src="<?= System::ASSETS?>icons/svgexport-60.svg" alt="">
+                        <img src="<?= System::ASSETS?>icons/svgexport-61.svg" alt="">
+                        <img src="<?= System::ASSETS?>icons/svgexport-62.svg" alt="">
+                        <img src="<?= System::ASSETS?>icons/svgexport-63.svg" alt="">
+                        <img src="<?= System::ASSETS?>icons/svgexport-64.svg" alt="">
 
                     </div>
                 </div>
@@ -598,12 +507,12 @@
                 </p>
             </div>
             <div style="order: 1;">
-                <img src="assets/icons/svgexport-65.svg" alt="">
-                <img src="assets/icons/svgexport-66.svg" alt="">
-                <img src="assets/icons/svgexport-67.svg" alt="">
-                <img src="assets/icons/svgexport-68.svg" alt="">
-                <img src="assets/icons/svgexport-69.svg" alt="">
-                <img src="assets/icons/svgexport-70.svg" alt="">
+                <img src="<?= System::ASSETS?>icons/svgexport-65.svg" alt="">
+                <img src="<?= System::ASSETS?>icons/svgexport-66.svg" alt="">
+                <img src="<?= System::ASSETS?>icons/svgexport-67.svg" alt="">
+                <img src="<?= System::ASSETS?>icons/svgexport-68.svg" alt="">
+                <img src="<?= System::ASSETS?>icons/svgexport-69.svg" alt="">
+                <img src="<?= System::ASSETS?>icons/svgexport-70.svg" alt="">
 
             </div>
         </div>
@@ -611,93 +520,8 @@
     </footer>
 
     <!-- End Footer  -->
-
-    <!-- Start Login Pop Up -->
-    <div id="sign-in">
-        <span onclick="hideModule('sign-in');" class="close" title="Close Modal">×</span>
-        <form action="">
-            <h1>تسجيــــل الدخـــول</h1>
-            <hr>
-            <input class="" type="text" onkeyup="validateName(this);" id="fullName" name="fullName" placeholder="البريد الإلكتروني أو رقم الجوال">
-
-            <div class="passDiv">
-                <a href="#">نسيت ؟</a>
-                <input class="input" type="password" onkeyup="validatePassword(this);" id="password" name="password" placeholder="كلمة السر">
-            </div>
-            <input class="input" id="submit" type="submit" value="تسجيل الدخـــول">
-
-            <div id="CreateAccountBox">
-                <label for="createAccountBtn">ليس لديك حساب ؟</label>
-                <a id="createAccountBtn" onclick="hideModule('sign-in'); showModule('sign-up');" href="#">إنشاء حساب جديد</a>
-            </div>
-
-        </form>
-    </div>
-    <!-- Finish Login Pop Up -->
-
-    <!-- Starting Sign-up Pop Up -->
-
-    <div id="sign-up">
-        <span onclick="hideModule('sign-up');" class="close" title="Close Modal">×</span>
-        <form action="">
-            <h1>إنشاء حساب</h1>
-            <hr>
-            <div id="OTP">
-                <input class="input1" type="tel" onkeyup="validateName(this);" id="phone" name="phone" placeholder="رقم الجوال">
-                <div class="input2" style="position: relative;">
-                    <label for="">رمز الدولة</label>
-                    <select name="" id="">
-                        <option value="yemen">+967 👍</option>
-                        <option value="yemen">+967 👍</option>
-                        <option value="yemen">+967 👍</option>
-                        <option value="yemen">+967 👍</option>
-                        <option value="yemen">+967 👍</option>
-                        <option value="yemen">+967 👍</option>
-                        <option value="yemen">+967 👍</option>
-                    </select>
-                </div>
-                <p>سوف نرسل لك <b>رمز التحقق عن طريق رسالة نصية</b></p>
-                <input class="input" type="submit" value="ارسال رمز التحقق">
-            </div>
-
-
-            <input class="" type="text" id="fname" name="fname" placeholder="الاسم الأول">
-            <input class="" type="text" id="lname" name="lname" placeholder="اسم العائلة">
-            <input class="" type="email" id="email" name="email" placeholder="اليريد الالكتروني">
-            <input class="" type="email" id="re-email" name="re-email" placeholder="تأكيد البريد الألكتروني">
-            <input class="" type="password" id="password" name="password" placeholder="كلمة السر">
-            <div class="checkbox">
-                <input type="checkbox" name="" id="">
-                <label for="">اوافق على <b>الشروط والأحكام</b></label>
-            </div>
-
-            <div class="checkbox">
-                <input type="checkbox" name="" id="">
-                <label for="">التسجل للإنظمام للنشرة البريدية</label>
-            </div>
-            <input class="input" id="submit" type="submit" value="إنشاء حساب">
-
-            <div id="LoginBox">
-                <label for="loginBtn"> لديك حساب ؟</label>
-                <a id="loginBtn" onclick="hideModule('sign-up'); showModule('sign-in');" href="#">تسجيل الدخـــول <</a>
-            </div>
-
-        </form>
-    </div>
-
-    <!-- Finish Sign-up Pop Up -->
-
-    <!-- Start Gallary Viewer PopUp -->
-    <div id="popUP">
-        <div class="header">
-            <h1 id="closeGallary" onclick="hideModule('popUP');">X</h1>
-        </div>
-        <div id="Gallary"></div>
-    </div>
-    <!-- End Gallary Viewer PopUp -->
-
-    <script src="assets/js/app.js"></script>
-    <script src="assets/js/gallary.js"></script>
+    <?php require_once(System::COMPONENTS."modales.php"); ?>
+    <?php require_once(System::COMPONENTS."scripts.php"); ?>
 </body>
 
 </html>

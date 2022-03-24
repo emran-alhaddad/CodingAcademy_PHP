@@ -2,6 +2,8 @@
 <html lang="ar">
 
 <?php require_once(System::COMPONENTS."head.php"); ?>
+<link rel="stylesheet" href="<?= System::ASSETS?>css/details.css">
+
 
 <body>
 

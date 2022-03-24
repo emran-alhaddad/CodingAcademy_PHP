@@ -7,10 +7,12 @@ class Server{
 
     public function __construct()
     {
-        $url=explode('/',$_GET['url']);
+        if(isset($_GET['url']))
+        {$url=explode('/',$_GET['url']);
         Router::use($url,function($link){SystemRoutes::show($link);});
+        }
+        else
+        System::redirect('Home');
     }
 
 }
-
-?>

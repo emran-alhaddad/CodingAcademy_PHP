@@ -2,6 +2,8 @@
 <html lang="ar">
 
     <?php require_once(System::COMPONENTS."head.php"); ?>
+    <link rel="stylesheet" href="<?= System::ASSETS?>css/checkoutStyle.css">
+
 
 <body onload="disapleAll();">
     
@@ -15,7 +17,7 @@
     <?php require_once(System::COMPONENTS."searchLogo.php"); ?>
 
         <div class="containerForm">
-            <form action="index.html" method="post" id="checkoutForm">
+            <form action="Home" method="post" id="checkoutForm">
 
                 <div class="tab">
                     <h1>

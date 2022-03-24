@@ -27,7 +27,7 @@ class System
     public static function redirect($dest)
     {
         try {
-            return header("Location:" . self::VIEW . $dest);
+            return header("Location:" .$dest);
         } catch (SystemError $err) {
             throw new SystemError(code: SystemError::DIR_NOT_FOUND);
         }

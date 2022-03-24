@@ -2,6 +2,8 @@
 <html lang="ar">
 
 <?php require_once(System::COMPONENTS."head.php"); ?>
+<link rel="stylesheet" href="<?= System::ASSETS?>css/shopBagStyle.css">
+
 
 <body onload="showCardProducts();">
 
@@ -157,7 +159,7 @@
                         <p>بالضغط على إنهاء التسوق فأنت توافق على
                             <a href="#">الشروط والأحكام و سياسةالخصوصية</a>
                         </p>
-                        <form action="checkout.html">
+                        <form action="checkout">
                             <input type="submit" value="تحديث سلة التسوق">
                         </form>
                     </div>

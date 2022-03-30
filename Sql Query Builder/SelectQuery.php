@@ -1,21 +1,11 @@
 <?php
-
-abstract class ORDERBY
-{
-    public const ASC = "ASC";
-    public const DESC = "DESC";
-}
-
-class SelectQuery
+require_once('Query.php');
+class SelectQuery extends Query
 {
     private $type;
-    private $fields;
-    private $tables;
-    private $where;
     private $groupBy;
     private $having;
     private $orderBy;
-    private $logic;
     private $count;
     private $sortType;
     private $innerJoin;
@@ -25,10 +15,8 @@ class SelectQuery
 
     public function __construct()
     {
+        parent::__construct();
         $this->type = "";
-        $this->fields = [];
-        $this->tables = [];
-        $this->where = [];
         $this->groupBy = [];
         $this->having = [];
         $this->orderBy = [];
@@ -36,7 +24,6 @@ class SelectQuery
         $this->innerJoin = [];
         $this->leftJoin = [];
         $this->rightJoin = [];
-        $this->logic = " AND ";
         $this->sortType = ORDERBY::ASC;
     }
 
@@ -51,13 +38,6 @@ class SelectQuery
     {
         if (strtoupper($type) === ORDERBY::ASC || strtoupper($type) === ORDERBY::DESC)
             $this->sortType = strtoupper($type);
-        return $this;
-    }
-
-    public function setLogic($type)
-    {
-        if (strtoupper($type) === "AND" || strtoupper($type) === "OR")
-            $this->logic = strtoupper(" " . $type . " ");
         return $this;
     }
 
@@ -94,4 +74,6 @@ class SelectQuery
     {
         return $this->$name;
     }
+
+    
 }

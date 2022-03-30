@@ -37,20 +37,20 @@
         // ->from("user")
         // ->execute();
 
-        $result = $query
-            ->from("article")
-            ->innerJoin("author", on: "author.author_id = article.id_author")
-            ->where('article.article_id>5')
-            ->or()
-            ->where('article.article_id<100')
-            ->leftJoin("category", on: "category.category_id = article.id_categorie")
-            ->distinct()
-            ->select("article.article_id", "article.article_title", "category.category_name", "author.author_fullname")
-            ->sort(ORDERBY::DESC)
-            ->orderBy("article.article_id")
-            ->sort(ORDERBY::ASC)
-            ->orderBy("article.id_categorie")
-            ->execute();
+        // $result = $query
+        //     ->from("article")
+        //     ->innerJoin("author", on: "author.author_id = article.id_author")
+        //     ->where('article.article_id>5')
+        //     ->or()
+        //     ->where('article.article_id<100')
+        //     ->leftJoin("category", on: "category.category_id = article.id_categorie")
+        //     ->distinct()
+        //     ->select("article.article_id", "article.article_title", "category.category_name", "author.author_fullname")
+        //     ->sort(ORDERBY::DESC)
+        //     ->orderBy("article.article_id")
+        //     ->sort(ORDERBY::ASC)
+        //     ->orderBy("article.id_categorie")
+        //     ->execute();
 
         // $query = new QueryBuilder();
         // $result = $query
@@ -60,13 +60,13 @@
         // ->or()
         // ->execute();
 
-        // $query = new QueryBuilder();
-        // $result = $query
-        // ->update('user')
-        // ->set('username',"'EmranCo'")
-        // ->set('password',"'EmranCo'")
-        // ->where('id=2')
-        // ->execute();
+        $query = new QueryBuilder("test");
+        $result = $query
+        ->update('user')
+        ->set('username',"'EmranCo'")
+        ->set('password',"'EmranCo'")
+        ->where('id=2')
+        ->execute();
 
         // $query = new QueryBuilder();
         // $result = $query

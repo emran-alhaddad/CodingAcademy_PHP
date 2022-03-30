@@ -1,36 +1,24 @@
 <?php
 
+// Require The Queries 
 require_once('SelectQuery.php');
 require_once('InsertQuery.php');
 require_once('UpdateQuery.php');
 require_once('DeleteQuery.php');
 require_once('DBConnection.php');
 
-
-abstract class QueryType
-{
-    public  const SELECT = "SELECT Query";
-    public  const INSERT = "INSERT Query";
-    public  const UPDATE = "UPDATE Query";
-    public  const DELETE = "DELETE Query";
-    public  const DONE = 1005;
-}
-
-
 class QueryBuilder
 {
-
-
     private $pdo;
     private $selectQuery;
     private $insertQuery;
     private $updateQuery;
     private $deleteQuery;
-    private static $QUERY_TYPE = QueryType::DONE;
     private $finalQuery;
     public $styledQuery;
+    public static $QUERY_TYPE = QueryType::DONE;
 
-    public function __construct($dbName="")
+    public function __construct($dbName)
     {
         $this->pdo = DBConnection::connect($dbName);
         $this->selectQuery = new SelectQuery();
@@ -41,55 +29,26 @@ class QueryBuilder
         $this->styledQuery = "";
     }
 
-    private function checkSelectState()
+
+    private function checkQueryState($currentState)
     {
         if (
-            self::$QUERY_TYPE != QueryType::SELECT &&
+            self::$QUERY_TYPE != $currentState &&
             self::$QUERY_TYPE != QueryType::DONE
         ) {
-            echo "<p style='color:red'> Finish Execution of ".self::$QUERY_TYPE ." Before Select again !!!</p>";
+            echo "<p style='color:red'> Finish Execution of " . self::$QUERY_TYPE . " Before Execute $currentState again !!!</p>";
             exit;
         }
-        self::$QUERY_TYPE = QueryType::SELECT;
-    }
-
-    // SELECT [*|fields] 
-    public function select($fields = "*"): self
-    {
-        $this->checkSelectState();
-        return $this->fillSelectArgs("fields", $fields, func_get_args());
-    }
-
-    // Count() 
-    public function count($fields = "*"): self
-    {
-        $this->checkSelectState();
-        return $this->fillSelectArgs("count", $fields, func_get_args());
-    }
-
-    // Sort 
-    public function sort($sortType = ORDERBY::ASC): self
-    {
-        $this->checkSelectState();
-        $this->selectQuery->setSortType($sortType);
-        return $this;
-    }
-
-    // SELECT [all|distict] 
-    public function distinct(): self
-    {
-        $this->checkSelectState();
-        $this->selectQuery->settype("distinct");
-        return $this;
+        self::$QUERY_TYPE = $currentState;
     }
 
     // Logic between conditions 
     public function or(): self
     {
         $this->selectQuery->setLogic("OR");
+
         $this->updateQuery->setLogic("OR");
         $this->deleteQuery->setLogic("OR");
-
         return $this;
     }
 
@@ -102,12 +61,6 @@ class QueryBuilder
         return $this;
     }
 
-    // FROM table1[,table2,..]
-    public function from($table): self
-    {
-        $this->checkSelectState();
-        return $this->fillSelectArgs("tables", $table, func_get_args());
-    }
 
     // WHERE conditions
     public function where($condition = "1"): self
@@ -129,54 +82,228 @@ class QueryBuilder
                 return $this->fillDeleteArgs("where", $condition, func_get_args());
 
             else {
-                echo "<p style='color:red'> Finish Execution of ".self::$QUERY_TYPE ." Before Insert again !!!</p>";
+                echo "<p style='color:red'> Finish Execution of " . self::$QUERY_TYPE . " Before Insert again !!!</p>";
                 exit;
             }
         }
     }
 
+    private function styleQuery($query)
+    {
+        $newLine = "<br>&nbsp;&nbsp;&nbsp;&nbsp;";
+
+        $this->styledQuery = str_replace("SELECT", "<i>SELECT</i> ", $query);
+        $this->styledQuery = str_replace("INSERT", "<i>INSERT</i> ", $query);
+        $this->styledQuery = str_replace("UPDATE", "<i>UPDATE</i> ", $query);
+        $this->styledQuery = str_replace("DELETE", "<i>DELETE</i> ", $query);
+
+        $this->styledQuery = str_replace("DISTINCT", " <i>DISTINCT</i>$newLine", $query);
+        $this->styledQuery = str_replace("COUNT", " <i>COUNT</i>", $query);
+        $this->styledQuery = str_replace("OR", " <i>OR</i> ", $query);
+        $this->styledQuery = str_replace("AND", " <i>AND</i> ", $query);
+        $this->styledQuery = str_replace("ON", " <i>ON</i> ", $query);
+        $this->styledQuery = str_replace("ASC", " <i>ASC</i> ", $query);
+        $this->styledQuery = str_replace("DESC", " <i>DESC</i> ", $query);
+
+        $this->styledQuery = str_replace("INTO", "<i>INTO</i> ", $query);
+        $this->styledQuery = str_replace("FROM", "<br><i>FROM</i>$newLine", $query);
+        $this->styledQuery = str_replace("VALUES", "<br><i>VALUES</i> ", $query);
+        $this->styledQuery = str_replace("SET", "<i>SET</i> ", $query);
+
+        $this->styledQuery = str_replace("WHERE", "<br><i>WHERE</i>$newLine", $query);
+        $this->styledQuery = str_replace("GROUP BY", "<br><i>GROUP BY</i> ", $query);
+        $this->styledQuery = str_replace("HAVING", "<br><i>HAVING</i> ", $query);
+        $this->styledQuery = str_replace("ORDER BY", "<br><i>ORDER BY</i>$newLine", $query);
+        $this->styledQuery = str_replace("INNER JOIN", "<br><i>INNER JOIN</i> ", $query);
+        $this->styledQuery = str_replace("LEFT JOIN", "<br><i>LEFT JOIN</i> ", $query);
+        $this->styledQuery = str_replace("RIGHT JOIN", "<br><i>RIGHT JOIN</i> ", $query);
+
+
+        $this->styledQuery = str_replace("(", "($newLine", $query);
+        $this->styledQuery = str_replace(")", "$newLine)", $query);
+        $this->styledQuery = str_replace(",", ",$newLine", $query);
+    }
+
+    public function getFinalQuery()
+    {
+        return $this->finalQuery;
+    }
+
+    public function execute()
+    {
+        try {
+            switch (self::$QUERY_TYPE) {
+                case QueryType::SELECT:
+                    $this->buildSelectQuery();
+                    break;
+                case QueryType::INSERT:
+                    $this->buildInsertQuery();
+                    break;
+                case QueryType::UPDATE:
+                    $this->buildUpdateQuery();
+                    break;
+                case QueryType::DELETE:
+                    $this->buildDeleteQuery();
+                    break;
+            }
+
+            $stmt = $this->pdo->prepare($this->finalQuery);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $error) {
+            echo "<p style='color:red'>$error;</p>";
+            // exit();
+        }
+    }
+
+    // Sort 
+    public function sort($sortType = ORDERBY::ASC): self
+    {
+        $this->checkQueryState(QueryType::SELECT);
+        $this->selectQuery->setSortType($sortType);
+        return $this;
+    }
+
+
+    // --------------------------- SELECT QUERY 
+
+    // SELECT [*|fields] 
+    public function select($fields = "*"): self
+    {
+        $this->checkQueryState(QueryType::SELECT);
+        return $this->fillSelectArgs("fields", $fields, func_get_args());
+    }
+
+    // Count() 
+    public function count($fields = "*"): self
+    {
+        $this->checkQueryState(QueryType::SELECT);
+        return $this->fillSelectArgs("count", $fields, func_get_args());
+    }
+
+    // SELECT [all|distict] 
+    public function distinct(): self
+    {
+        $this->checkQueryState(QueryType::SELECT);
+        $this->selectQuery->settype("distinct");
+        return $this;
+    }
+
+
+    // FROM table1[,table2,..]
+    public function from($table): self
+    {
+        $this->checkQueryState(QueryType::SELECT);
+        return $this->fillSelectArgs("tables", $table, func_get_args());
+    }
+
+    // ORDERBY conditions
+    public function orderBy($field): self
+    {
+        $this->checkQueryState(QueryType::SELECT);
+        return $this->fillSelectArgs("orderBy", $field, func_get_args());
+    }
 
     // GROUPBY conditions
     public function groupBy($field): self
     {
-        $this->checkSelectState();
+        $this->checkQueryState(QueryType::SELECT);
         return $this->fillSelectArgs("groupBy", $field, func_get_args());
     }
 
     // HAVING conditions
     public function having($condition): self
     {
-        $this->checkSelectState();
+        $this->checkQueryState(QueryType::SELECT);
         return $this->fillSelectArgs("having", $condition, func_get_args());
     }
 
-    // ORDERBY conditions
-    public function orderBy($field): self
-    {
-        $this->checkSelectState();
-        return $this->fillSelectArgs("orderBy", $field, func_get_args());
-    }
 
     public function innerJoin($table, $on)
     {
-        $this->checkSelectState();
+        $this->checkQueryState(QueryType::SELECT);
         $this->selectQuery->setJoin("Inner", $table, $on);
         return $this;
     }
 
     public function leftJoin($table, $on)
     {
-        $this->checkSelectState();
+        $this->checkQueryState(QueryType::SELECT);
         $this->selectQuery->setJoin("Left", $table, $on);
         return $this;
     }
 
     public function rightJoin($table, $on)
     {
-        $this->checkSelectState();
+        $this->checkQueryState(QueryType::SELECT);
         $this->selectQuery->setJoin("Right", $table, $on);
         return $this;
     }
+
+
+
+
+
+
+    // -------------- Insert Query Configurations
+
+    public function insertInto($table)
+    {
+        $this->fillInsertArgs("tables", $table, func_get_args());
+        return $this;
+    }
+
+    public function fields()
+    {
+
+        $this->fillInsertArgs("fields", "", func_get_args());
+        print_r($this->insertQuery);
+        return $this;
+    }
+
+    public function values()
+    {
+        $this->fillInsertArgs("values", "", func_get_args());
+        return $this;
+    }
+
+
+
+
+    // -------------- Update Query Configurations
+
+
+    public function update($table)
+    {
+        $this->checkQueryState(QueryType::UPDATE);
+        $this->updateQuery->tables = $table;
+        return $this;
+    }
+
+    public function set($field, $value)
+    {
+        $this->checkQueryState(QueryType::UPDATE);
+        $this->updateQuery->fields = $field;
+        $this->updateQuery->values = $value;
+        return $this;
+    }
+
+
+
+    // -------------- DELETE Query Configurations
+
+    public function delete($table)
+    {
+        $this->checkQueryState(QueryType::DELETE);
+        $this->deleteQuery->tables = $table;
+        return $this;
+    }
+
+
+
+    // -----------------------------------
+
+    //  ---------------- Build Queries 
 
     private function buildSelectQuery()
     {
@@ -236,96 +363,7 @@ class QueryBuilder
             . $wheres .  $groups .
             $havings .  $orders;
 
-
-
-        $this->styledQuery = "SELECT" . $this->selectQuery->type . $count .
-            $fields . "FROM " . $tables . $innerJoin . $leftJoin . $rigthJoin
-            . $wheres .  $groups .
-            $havings .  $orders;
-
-        $newLine = "<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-        $this->styledQuery = str_replace("SELECT", "<i>SELECT</i> ", $this->styledQuery);
-        $this->styledQuery = str_replace("DISTINCT", " <i>DISTINCT</i>$newLine", $this->styledQuery);
-        $this->styledQuery = str_replace("COUNT", " <i>COUNT</i>", $this->styledQuery);
-        $this->styledQuery = str_replace("FROM", "<br><i>FROM</i>$newLine", $this->styledQuery);
-        $this->styledQuery = str_replace("WHERE", "<br><i>WHERE</i>$newLine", $this->styledQuery);
-        $this->styledQuery = str_replace("GROUP BY", "<br><i>GROUP BY</i> ", $this->styledQuery);
-        $this->styledQuery = str_replace("HAVING", "<br><i>HAVING</i> ", $this->styledQuery);
-        $this->styledQuery = str_replace("ORDER BY", "<br><i>ORDER BY</i>$newLine", $this->styledQuery);
-        $this->styledQuery = str_replace(", ", ", $newLine", $this->styledQuery);
-        $this->styledQuery = str_replace("INNER JOIN", "<br><i>INNER JOIN</i> ", $this->styledQuery);
-        $this->styledQuery = str_replace("LEFT JOIN", "<br><i>LEFT JOIN</i> ", $this->styledQuery);
-        $this->styledQuery = str_replace("RIGHT JOIN", "<br><i>RIGHT JOIN</i> ", $this->styledQuery);
-        $this->styledQuery = str_replace("ON", " <i>ON</i> ", $this->styledQuery);
-        $this->styledQuery = str_replace("ASC", " <i>ASC</i> ", $this->styledQuery);
-        $this->styledQuery = str_replace("DESC", " <i>DESC</i> ", $this->styledQuery);
-    }
-
-    public function getFinalQuery()
-    {
-        return $this->finalQuery;
-    }
-
-    public function execute()
-    {
-        try {
-            switch (self::$QUERY_TYPE) {
-                case QueryType::SELECT:
-                    $this->buildSelectQuery();
-                    break;
-                case QueryType::INSERT:
-                    $this->buildInsertQuery();
-                    break;
-                case QueryType::UPDATE:
-                    $this->buildUpdateQuery();
-                    break;
-                case QueryType::DELETE:
-                    $this->buildDeleteQuery();
-                    break;
-            }
-
-            $stmt = $this->pdo->prepare($this->finalQuery);
-            $stmt->execute();
-            return $stmt->fetchAll(PDO::FETCH_OBJ);
-        } catch (Exception $error) {
-            echo "<p style='color:red'>$error;</p>";
-            // exit();
-        }
-    }
-
-
-    // -------------- Insert Query Configurations
-
-    private function checkInsertState()
-    {
-        if (
-            self::$QUERY_TYPE != QueryType::INSERT &&
-            self::$QUERY_TYPE != QueryType::DONE
-        ) {
-            echo "<p style='color:red'> Finish Execution of ".self::$QUERY_TYPE ." Before Insert again !!!</p>";
-            exit;
-        }
-        self::$QUERY_TYPE = QueryType::INSERT;
-    }
-
-    public function insertInto($table)
-    {
-        $this->fillInsertArgs("tables", $table, func_get_args());
-        return $this;
-    }
-
-    public function fields()
-    {
-
-        $this->fillInsertArgs("fields", "", func_get_args());
-        print_r($this->insertQuery);
-        return $this;
-    }
-
-    public function values()
-    {
-        $this->fillInsertArgs("values", "", func_get_args());
-        return $this;
+        $this->styleQuery($this->finalQuery);
     }
 
     private function buildInsertQuery()
@@ -344,46 +382,8 @@ class QueryBuilder
         if (!empty($values)) $values = " ( " . $values . " ) ";
 
 
-        $this->finalQuery = $this->styledQuery
-            = "INSERT INTO " . $tables . $fields . " VALUES" . $values;
-
-        $newLine = "<br>&nbsp;&nbsp;&nbsp;&nbsp;";
-        $this->styledQuery = str_replace("INSERT", "<i>INSERT</i> ", $this->styledQuery);
-        $this->styledQuery = str_replace("INTO", "<i>INTO</i> ", $this->styledQuery);
-        $this->styledQuery = str_replace("VALUES", "<br><i>VALUES</i> ", $this->styledQuery);
-        $this->styledQuery = str_replace("(", "($newLine", $this->styledQuery);
-        $this->styledQuery = str_replace(")", "$newLine)", $this->styledQuery);
-        $this->styledQuery = str_replace(",", ",$newLine", $this->styledQuery);
-    }
-
-
-    // -------------- Update Query Configurations
-
-    private function checkUpdateState()
-    {
-        if (
-            self::$QUERY_TYPE != QueryType::UPDATE &&
-            self::$QUERY_TYPE != QueryType::DONE
-        ) {
-            echo "<p style='color:red'> Finish Execution of ".self::$QUERY_TYPE ." Before Update again !!!</p>";
-            exit;
-        }
-        self::$QUERY_TYPE = QueryType::UPDATE;
-    }
-
-    public function update($table)
-    {
-        $this->checkUpdateState();
-        $this->updateQuery->tables = $table;
-        return $this;
-    }
-
-    public function set($field, $value)
-    {
-        $this->checkUpdateState();
-        $this->updateQuery->fields = $field;
-        $this->updateQuery->values = $value;
-        return $this;
+        $this->finalQuery = "INSERT INTO " . $tables . $fields . " VALUES" . $values;
+        $this->styleQuery($this->finalQuery);
     }
 
     private function buildUpdateQuery()
@@ -402,41 +402,9 @@ class QueryBuilder
         if (!empty($params)) $params = " SET " . substr_replace($params, "", -1);
         if (!empty($wheres)) $wheres = " WHERE " . $wheres;
 
-
-
-
-
-        $this->finalQuery = $this->styledQuery = "UPDATE " . $tables . $params . $wheres;
-
-        $newLine = "<br>&nbsp;&nbsp;&nbsp;&nbsp;";
-        $this->styledQuery = str_replace("UPDATE", "<i>UPDATE</i> ", $this->finalQuery);
-        $this->styledQuery = str_replace("SET", "<i>SET</i> ", $this->finalQuery);
-        $this->styledQuery = str_replace("WHERE", "<i>WHERE</i> ", $this->finalQuery);
-        $this->styledQuery = str_replace(",", ",$newLine", $this->finalQuery);
+        $this->finalQuery = "UPDATE " . $tables . $params . $wheres;
+        $this->styleQuery($this->finalQuery);
     }
-
-
-    // -------------- DELETE Query Configurations
-
-    private function checkDeleteState()
-    {
-        if (
-            self::$QUERY_TYPE != QueryType::DELETE &&
-            self::$QUERY_TYPE != QueryType::DONE
-        ) {
-            echo "<p style='color:red'> Finish Execution of ".self::$QUERY_TYPE ." Before Delete again !!!</p>";
-            exit;
-        }
-        self::$QUERY_TYPE = QueryType::DELETE;
-    }
-
-    public function delete($table)
-    {
-        $this->checkDeleteState();
-        $this->deleteQuery->tables = $table;
-        return $this;
-    }
-
 
     private function buildDeleteQuery()
     {
@@ -451,18 +419,11 @@ class QueryBuilder
 
 
         $this->finalQuery = $this->styledQuery = "DELETE FROM " . $tables . $wheres;
-
-        $newLine = "<br>&nbsp;&nbsp;&nbsp;&nbsp;";
-        $this->styledQuery = str_replace("DELETE", "<i>DELETE</i> ", $this->finalQuery);
-        $this->styledQuery = str_replace("FROM", "<i>FROM</i> ", $this->finalQuery);
-        $this->styledQuery = str_replace("WHERE", "<i>WHERE</i> ", $this->finalQuery);
-        $this->styledQuery = str_replace(",", ",$newLine", $this->finalQuery);
+        $this->styleQuery($this->finalQuery);
     }
 
 
-    // -----------------------------------
-
-    // Fill Arguments Templates
+    // -------------------- Fill Arguments Templates
 
     private function fillSelectArgs($property, $default, $args)
     {
@@ -489,7 +450,7 @@ class QueryBuilder
 
     private function fillInsertArgs($property, $default, $args)
     {
-        $this->checkInsertState();
+        $this->checkQueryState(QueryType::INSERT);
         if (count($args) > 1)
             foreach ($args as $arg) {
                 $this->insertQuery->$property =  $arg;
